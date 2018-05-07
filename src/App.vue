@@ -15,11 +15,7 @@
     v-else
     class="directus">
 
-    <loader
-      v-if="hydrating"
-      area="full-page" />
-
-    <div v-else>
+    <div v-if="!hydrating">
       <main>
         <router-view class="page-root" />
       </main>
