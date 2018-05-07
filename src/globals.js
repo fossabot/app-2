@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Spinner from "vue-simple-spinner";
 
+import HeaderBar from "./components/HeaderBar.vue";
+
 import HeaderButton from "./components/globals/HeaderButton.vue";
 import InvisibleLabel from "./components/globals/InvisibleLabel.vue";
 import VModal from "./components/globals/VModal.vue";
@@ -23,6 +25,8 @@ import InterfaceExtension from "./components/extensions/InterfaceExtension.vue";
 import ReadonlyExtension from "./components/extensions/ReadonlyExtension.vue";
 import ListingExtension from "./components/extensions/ListingExtension.vue";
 import ListingOptionsExtension from "./components/extensions/ListingOptionsExtension.vue";
+
+Vue.component("header-bar", HeaderBar);
 
 Vue.component("header-button", HeaderButton);
 Vue.component("interface-extension", InterfaceExtension);
