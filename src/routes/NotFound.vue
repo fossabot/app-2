@@ -1,6 +1,7 @@
 <template>
   <div class="not-found">
     <header-bar :title="$t('page_not_found')" />
+    <nav-sidebar />
     <v-error
       :title="$t('page_not_found')"
       :body="$t('page_not_found_body')"
