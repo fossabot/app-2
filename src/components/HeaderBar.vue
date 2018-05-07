@@ -1,7 +1,7 @@
 <template>
   <header class="header-bar">
-    <h1 v-if="title" class="style-1">{{ title }}</h1>
-    <ol v-else class="breadcrumb">
+    <h1 v-if="title" class="title">{{ title }}</h1>
+    <ol v-else class="breadcrumb title">
       <li v-for="({ name, path }, index) in (breadcrumb || defaultBreadcrumb)">
         <template v-if="index !== (breadcrumb || defaultBreadcrumb).length - 1">{{ name }}</template>
         <h1 v-else>{{ name }}</h1>
@@ -50,17 +50,28 @@ export default {
 
 <style scoped lang="scss">
 .header-bar {
-  background-color: black;
   background-color: var(--darkest-gray);
   position: fixed;
   width: 100%;
   right: 0;
   top: 0;
   height: 4.62rem;
-  color: white;
+  color: var(--white);
   display: flex;
   align-items: center;
   z-index: 20;
   padding-left: 20px;
+
+  .title {
+    color: var(--darker-gray);
+    font-size: 1.38em;
+    line-height: 1.16;
+    font-weight: 400;
+    height: 20px;
+  }
+
+  h1.title {
+    color: var(--white);
+  }
 }
 </style>
