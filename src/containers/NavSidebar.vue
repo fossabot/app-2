@@ -18,22 +18,6 @@
       <button
         class="close"
         @click="$emit('toggleNav', false)">Close nav</button>
-      <section class="logo">
-        <transition name="fade">
-          <img
-            v-show="customLogo && customLogoLoaded"
-            @load="customLogoLoaded = true"
-            :src="customLogo"
-            :alt="projectName">
-        </transition>
-        <transition name="fade">
-          <img
-            v-show="logoLoaded && !customLogoExists"
-            @load="logoLoaded = true"
-            src="../assets/logo.svg"
-            alt="Directus Logo">
-        </transition>
-      </section>
       <section class="content">
         <button
           class="project-switcher"
@@ -170,27 +154,9 @@ export default {
     return {
       projectSwitcherActive: false,
       signOutActive: false,
-      customLogo: null,
-      customLogoLoaded: false,
-      logoLoaded: false
     };
   },
-  created() {
-    const logoID = this.$store.state.settings.data.logo;
-
-    if (logoID) {
-      // NOTE: this should be handled by the API. directus/api#112
-      this.$api
-        .getItem("directus_files", logoID)
-        .then(res => res.data.storage.full_url)
-        .then(url => (this.customLogo = url))
-        .catch(console.error);
-    }
-  },
   computed: {
-    customLogoExists() {
-      return Boolean(this.$store.state.settings.data.logo);
-    },
     collectionNames() {
       const collections = this.$store.state.collections.data;
 
@@ -292,22 +258,6 @@ aside {
       top: 13px;
       left: 13px;
     }
-  }
-}
-
-.logo {
-  position: relative;
-  background-color: var(--accent);
-  height: var(--header-height);
-  padding: 10px;
-  display: grid;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    grid-row: 1;
-    grid-column: 1;
   }
 }
 
