@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import { Wormhole } from "portal-vue";
 import FocusLock from "vue-focus-lock";
 
 export default {
