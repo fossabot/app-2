@@ -22,109 +22,109 @@ Vue.use(Router);
 const router = new Router({
   mode: "history",
   routes: [
-    {
-      path: "/modals",
-      component: ModalDebug
-    },
-    {
-      path: "/",
-      redirect: "/collections"
-    },
-    {
-      path: "/collections",
-      component: Collections
-    },
-    {
-      path: "/collections/:collection",
-      props: true,
-      component: ItemListingGuard
-    },
-    {
-      path: "/collections/:collection/:primaryKey",
-      props: true,
-      component: EditGuard,
-      meta: {
-        /* NOTE:
-         * Hi there! I'm not too pleased with this solution of 'hacking' the infoSidebar
-         *   to be wide on certain pages, but I didn't want to add a third sidebar either..
-         *
-         * This'll do fine for the time being, but if you can think of a better way;
-         *   please let me know!
-         *
-         * ~ Rijk
-         */
-        infoSidebarWidth: "wide"
-      }
-    },
-    {
-      path: "/files",
-      props: {
-        collection: "directus_files"
-      },
-      component: ItemListing
-    },
-    {
-      path: "/files/:primaryKey",
-      props(route) {
-        return {
-          collection: "directus_files",
-          primaryKey: route.params.primaryKey
-        };
-      },
-      component: Edit,
-      meta: {
-        infoSidebarWidth: "wide"
-      }
-    },
-    {
-      path: "/users",
-      props: {
-        collection: "directus_users"
-      },
-      component: ItemListing
-    },
-    {
-      path: "/users/:primaryKey",
-      props(route) {
-        return {
-          collection: "directus_users",
-          primaryKey: route.params.primaryKey
-        };
-      },
-      component: Edit,
-      meta: {
-        infoSidebarWidth: "wide"
-      }
-    },
-    {
-      path: "/activity",
-      props: {
-        collection: "directus_activity",
-        readonly: true
-      },
-      component: ItemListing
-    },
-    {
-      path: "/debug",
-      component: Debug
-    },
-    {
-      path: "/settings",
-      component: Settings
-    },
-    {
-      path: "/settings/global",
-      component: SettingsGlobal
-    },
-    {
-      path: "/interfaces",
-      component: Interfaces
-    },
-    {
-      path: "/interfaces/:id",
-      component: InterfaceDebugger,
-      props: true
-    },
+    // {
+    //   path: "/modals",
+    //   component: ModalDebug
+    // },
+    // {
+    //   path: "/",
+    //   redirect: "/collections"
+    // },
+    // {
+    //   path: "/collections",
+    //   component: Collections
+    // },
+    // {
+    //   path: "/collections/:collection",
+    //   props: true,
+    //   component: ItemListingGuard
+    // },
+    // {
+    //   path: "/collections/:collection/:primaryKey",
+    //   props: true,
+    //   component: EditGuard,
+    //   meta: {
+    //     /* NOTE:
+    //      * Hi there! I'm not too pleased with this solution of 'hacking' the infoSidebar
+    //      *   to be wide on certain pages, but I didn't want to add a third sidebar either..
+    //      *
+    //      * This'll do fine for the time being, but if you can think of a better way;
+    //      *   please let me know!
+    //      *
+    //      * ~ Rijk
+    //      */
+    //     infoSidebarWidth: "wide"
+    //   }
+    // },
+    // {
+    //   path: "/files",
+    //   props: {
+    //     collection: "directus_files"
+    //   },
+    //   component: ItemListing
+    // },
+    // {
+    //   path: "/files/:primaryKey",
+    //   props(route) {
+    //     return {
+    //       collection: "directus_files",
+    //       primaryKey: route.params.primaryKey
+    //     };
+    //   },
+    //   component: Edit,
+    //   meta: {
+    //     infoSidebarWidth: "wide"
+    //   }
+    // },
+    // {
+    //   path: "/users",
+    //   props: {
+    //     collection: "directus_users"
+    //   },
+    //   component: ItemListing
+    // },
+    // {
+    //   path: "/users/:primaryKey",
+    //   props(route) {
+    //     return {
+    //       collection: "directus_users",
+    //       primaryKey: route.params.primaryKey
+    //     };
+    //   },
+    //   component: Edit,
+    //   meta: {
+    //     infoSidebarWidth: "wide"
+    //   }
+    // },
+    // {
+    //   path: "/activity",
+    //   props: {
+    //     collection: "directus_activity",
+    //     readonly: true
+    //   },
+    //   component: ItemListing
+    // },
+    // {
+    //   path: "/debug",
+    //   component: Debug
+    // },
+    // {
+    //   path: "/settings",
+    //   component: Settings
+    // },
+    // {
+    //   path: "/settings/global",
+    //   component: SettingsGlobal
+    // },
+    // {
+    //   path: "/interfaces",
+    //   component: Interfaces
+    // },
+    // {
+    //   path: "/interfaces/:id",
+    //   component: InterfaceDebugger,
+    //   props: true
+    // },
     {
       path: "/login",
       component: Login,
