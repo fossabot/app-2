@@ -1,6 +1,5 @@
 import Vue from "vue";
 import VueMQ from "vue-mq";
-import PortalVue from "portal-vue";
 import lodash from "lodash";
 import Notifications from "vue-notification";
 import VueDraggable from "vuedraggable";
@@ -41,7 +40,6 @@ Vue.config.productionTip = false;
 Object.defineProperty(Vue.prototype, "$lodash", { value: lodash });
 Object.defineProperty(Vue.prototype, "$api", { value: api });
 
-Vue.use(PortalVue);
 Vue.use(VueMQ, {
   breakpoints: {
     small: 800,
