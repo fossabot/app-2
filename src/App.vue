@@ -20,30 +20,8 @@
       area="full-page" />
 
     <div v-else>
-      <header-bar
-        :show-info-button="infoSidebarHasContent"
-        @toggleNav="toggleNav"
-        @toggleInfo="toggleInfo" />
-      <v-blocker
-        v-if="navActive && $mq === 'small'"
-        :z-index="25"
-        @click="toggleNav(false)" />
-      <nav-sidebar
-        v-show="navActive || $mq !== 'small'"
-        @toggleNav="toggleNav" />
-      <main :class="{ 'info-active': infoActive }">
+      <main>
         <router-view class="page-root" />
-        <v-blocker
-          v-if="infoSidebarHasContent &&
-            ((infoActive && $mq === 'small') || (infoActive && $mq === 'medium'))
-          "
-          :z-index="5"
-          @click="toggleInfo(false)" />
-        <info-sidebar
-          v-show="infoSidebarHasContent && infoActive"
-          :class="$route.meta && $route.meta.infoSidebarWidth"
-          class="info-sidebar"
-          @close="toggleInfo(false)" />
       </main>
 
       <v-confirm
@@ -53,51 +31,25 @@
         :cancel-text="$t('discard_changes')"
         @confirm="keepEditing"
         @cancel="discardChanges" />
-
     </div>
 
     <notifications
       position="bottom right"
       classes="directus-notification" />
-
   </div>
 </template>
 
 <script>
-import { Wormhole } from "portal-vue";
-import HeaderBar from "./containers/HeaderBar.vue";
-import NavSidebar from "./containers/NavSidebar.vue";
-import InfoSidebar from "./components/InfoSidebar.vue";
-import VBlocker from "./components/VBlocker.vue";
 import VError from "./components/VError.vue";
 
 export default {
   name: "directus",
   components: {
-    HeaderBar,
-    NavSidebar,
-    InfoSidebar,
-    VBlocker,
     VError
-  },
-  data() {
-    return {
-      navActive: false,
-      infoActive: false
-    };
   },
   computed: {
     publicRoute() {
       return this.$route.meta.publicRoute || false;
-    },
-    infoSidebarHasContent() {
-      return (
-        Wormhole.hasContentFor("info-sidebar") ||
-        Wormhole.hasContentFor("info-sidebar-system")
-      );
-    },
-    subHeaderHasContent() {
-      return Wormhole.hasContentFor("sub-header");
     },
     hydrating() {
       return this.$store.state.hydrating;
@@ -109,48 +61,7 @@ export default {
       return this.$route.query.editing === true;
     }
   },
-  watch: {
-    $route() {
-      this.bodyClass();
-      this.navActive = false;
-      this.infoActive = false;
-    },
-    infoActive(visible) {
-      const className =
-        this.$route.meta && this.$route.meta.infoSidebarWidth === "wide"
-          ? "info-wide-active"
-          : "info-active";
-
-      if (visible) {
-        document.body.classList.add(className);
-      } else {
-        document.body.classList.remove("info-wide-active");
-        document.body.classList.remove("info-active");
-      }
-    },
-    hydratingError(newVal) {
-      if (newVal) {
-        document.body.classList.add("no-padding");
-      }
-    }
-  },
-  created() {
-    this.bodyClass();
-  },
   methods: {
-    bodyClass() {
-      if (this.publicRoute) {
-        document.body.classList.add("no-padding");
-      } else {
-        document.body.classList.remove("no-padding");
-      }
-    },
-    toggleNav(visible = !this.navActive) {
-      this.navActive = visible;
-    },
-    toggleInfo(visible = !this.infoActive) {
-      this.infoActive = visible;
-    },
     keepEditing() {
       this.$router.push(
         `/collections/${this.$route.query.collection}/${
@@ -166,44 +77,10 @@ export default {
 };
 </script>
 
-<style lang="scss">
-body:not(.no-padding) {
-  padding-top: var(--header-height);
-
-  @media (min-width: 50em) {
-    padding-left: calc(
-      var(--nav-sidebar-width) + 1px
-    ); /* +1px = sidebar shadow */
-  }
-
-  @media (min-width: 62.5em) {
-    transition: padding-right var(--medium) var(--transition-out);
-
-    &.info-active {
-      transition: padding-right var(--slow) var(--transition-in);
-      padding-right: var(--nav-sidebar-width);
-    }
-
-    &.info-wide-active {
-      transition: padding-right var(--slow) var(--transition-in);
-      padding-right: var(--info-sidebar-width);
-    }
-  }
-}
-</style>
-
 <style lang="scss" scoped>
 main {
   width: 100%;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
-}
-
-.info-sidebar {
-  max-width: var(--nav-sidebar-width);
-}
-
-.info-sidebar.wide {
-  max-width: var(--info-sidebar-width);
 }
 </style>
