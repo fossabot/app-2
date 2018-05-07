@@ -1,28 +1,13 @@
 <template>
   <header class="header-bar">
-    <button
-      class="nav-toggle"
-      @click="$emit('toggleNav', true)"><i class="material-icons">menu</i></button>
-
-    <portal-target
-      class="title"
-      name="header-title"><h1 class="style-1"><breadcrumb /></h1></portal-target>
-
-    <portal-target
-      name="header-custom"
-      class="custom"
-      slim />
-
-    <header-button
-      v-if="showInfoButton"
-      icon="info"
-      class="button"
-      @click="$emit('toggleInfo')">
-      {{ $t('info') }}
-    </header-button>
-    <portal-target
-      name="header-buttons"
-      class="buttons" />
+    <h1 v-if="title" class="style-1">{{ title }}</h1>
+    <ol v-else class="breadcrumb">
+      <li v-for="({ name, path }, index) in (breadcrumb || defaultBreadcrumb)">
+        <template v-if="index !== (breadcrumb || defaultBreadcrumb).length - 1">{{ name }}</template>
+        <h1 v-else>{{ name }}</h1>
+      </li>
+    </ol>
+    <slot />
   </header>
 </template>
 
@@ -30,9 +15,34 @@
 export default {
   name: "header-bar",
   props: {
-    showInfoButton: {
-      type: Boolean,
-      default: false
+    title: {
+      type: String,
+      default: null
+    },
+    breadcrumb: {
+      type: Array,
+      default: null
+    }
+  },
+  computed: {
+    defaultBreadcrumb() {
+      const routeParts = this.$route.path.split("/");
+      routeParts.shift();
+
+      return routeParts.map((part, i) => {
+        let url = "";
+
+        for (let x = 0; x < i; x++) {
+          url += `/${routeParts[x]}`;
+        }
+
+        url += `/${part}`;
+
+        return {
+          name: this.$helpers.formatTitle(part),
+          path: url
+        };
+      });
     }
   }
 };
