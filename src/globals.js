@@ -1,10 +1,8 @@
 import Vue from "vue";
 import Spinner from "vue-simple-spinner";
 
-import Breadcrumb from "./components/globals/Breadcrumb.vue";
 import HeaderButton from "./components/globals/HeaderButton.vue";
 import InvisibleLabel from "./components/globals/InvisibleLabel.vue";
-import Loader from "./components/globals/Loader.vue";
 import VModal from "./components/globals/VModal.vue";
 import VAvatar from "./components/globals/VAvatar.vue";
 import VAlert from "./components/globals/VAlert.vue";
@@ -26,13 +24,11 @@ import ReadonlyExtension from "./components/extensions/ReadonlyExtension.vue";
 import ListingExtension from "./components/extensions/ListingExtension.vue";
 import ListingOptionsExtension from "./components/extensions/ListingOptionsExtension.vue";
 
-Vue.component("breadcrumb", Breadcrumb);
 Vue.component("header-button", HeaderButton);
 Vue.component("interface-extension", InterfaceExtension);
 Vue.component("invisible-label", InvisibleLabel);
 Vue.component("listing-extension", ListingExtension);
 Vue.component("listing-options-extension", ListingOptionsExtension);
-Vue.component("loader", Loader);
 Vue.component("readonly-extension", ReadonlyExtension);
 Vue.component("spinner", Spinner);
 Vue.component("v-avatar", VAvatar);
