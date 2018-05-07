@@ -15,154 +15,150 @@
         @confirm="$router.push('/logout')"
         @cancel="signOutActive = false"/>
 
-      <focus-lock :disabled="!overlay">
+      <button
+        v-if="$mq === 'small'"
+        class="close"
+        @click="$emit('toggleNav', false)">Close nav</button>
+      <section class="logo">
+        <transition name="fade">
+          <img
+            v-show="customLogo && customLogoLoaded"
+            @load="customLogoLoaded = true"
+            :src="customLogo"
+            :alt="projectName">
+        </transition>
+        <transition name="fade">
+          <img
+            v-show="logoLoaded && !customLogoExists"
+            @load="logoLoaded = true"
+            src="../assets/logo.svg"
+            alt="Directus Logo">
+        </transition>
+      </section>
+      <section class="content">
         <button
-          v-if="$mq === 'small'"
-          class="close"
-          @click="$emit('toggleNav', false)">Close nav</button>
-        <section class="logo">
-          <transition name="fade">
-            <img
-              v-show="customLogo && customLogoLoaded"
-              @load="customLogoLoaded = true"
-              :src="customLogo"
-              :alt="projectName">
-          </transition>
-          <transition name="fade">
-            <img
-              v-show="logoLoaded && !customLogoExists"
-              @load="logoLoaded = true"
-              src="../assets/logo.svg"
-              alt="Directus Logo">
-          </transition>
-        </section>
-        <section class="content">
-          <button
-            class="project-switcher"
-            @click="projectSwitcherActive = true">
-            <v-signal class="icon" />
-            <span class="no-wrap">{{ $store.state.auth.projectName }}</span>
-            <i class="material-icons chevron">arrow_drop_down</i>
+          class="project-switcher"
+          @click="projectSwitcherActive = true">
+          <v-signal class="icon" />
+          <span class="no-wrap">{{ $store.state.auth.projectName }}</span>
+          <i class="material-icons chevron">arrow_drop_down</i>
+        </button>
+        <h3 class="style-4">{{ $t('collections') }}</h3>
+        <nav>
+          <ul>
+            <li
+              v-for="name in collectionNames"
+              :key="name">
+              <router-link :to="`/collections/${name}`"><svg
+                class="icon"
+                viewBox="0 0 15 16">
+                <!-- eslint-disable max-len -->
+                <path
+                  d="M.422 12.598l6.773 3.114a.696.696 0 0 0 .61 0l6.771-3.114a.676.676 0 0 0 .424-.66V3.844a.726.726 0 0 0-.013-.13v-.039a.727.727 0 0 0-.029-.093l-.01-.03a.726.726 0 0 0-.059-.11l-.016-.023a.727.727 0 0 0-.064-.077l-.035-.023a.726.726 0 0 0-.08-.066l-.02-.014a.727.727 0 0 0-.098-.055L7.803.07a.696.696 0 0 0-.61 0L.423 3.184a.726.726 0 0 0-.098.055l-.02.014a.727.727 0 0 0-.08.066L.2 3.344a.727.727 0 0 0-.064.077l-.016.023a.726.726 0 0 0-.058.11l-.02.028a.727.727 0 0 0-.03.093v.038A.726.726 0 0 0 0 3.844v8.094c0 .31.14.53.422.66zm1.031-7.617l5.319 2.45v6.493l-5.319-2.451V4.98zm6.774 8.942V7.43l5.318-2.45v6.493l-5.318 2.449zM7.499 1.525l5.035 2.32-5.035 2.318-5.034-2.319 5.034-2.319z" />
+                  <!-- eslint-enable max-len -->
+              </svg>{{ $t(`collections-${name}`) }}</router-link>
+            </li>
+          </ul>
+        </nav>
+        <h3
+          v-if="bookmarks && bookmarks.length > 0"
+          class="style-4">{{ $t('bookmarks') }}</h3>
+        <nav v-if="bookmarks && bookmarks.length > 0">
+          <ul>
+            <li
+              v-for="bookmark in bookmarks"
+              :key="bookmark.id"
+              class="bookmark">
+              <button
+                class="no-wrap"
+                @click="toBookmark(bookmark)">
+              <i class="material-icons icon">bookmark_outline</i>{{ bookmark.title }}</button>
+              <button v-tooltip="$t('delete_bookmark')" @click="deleteBookmark(bookmark.id)">
+                <i class="material-icons">remove_circle_outline</i>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </section>
+      <section class="user-menu">
+        <header>
+          <button @click="toggleUserMenu()">
+            <v-avatar
+              :src="avatarURL"
+              :alt="fullName"
+              :indicator="true"
+              class="avatar" />
+            <span>{{ fullName }}</span>
+            <i class="material-icons">more_vert</i>
           </button>
-          <h3 class="style-4">{{ $t('collections') }}</h3>
+        </header>
+        <div class="links">
           <nav>
             <ul>
-              <li
-                v-for="name in collectionNames"
-                :key="name">
-                <router-link :to="`/collections/${name}`"><svg
-                  class="icon"
-                  viewBox="0 0 15 16">
-                  <!-- eslint-disable max-len -->
-                  <path
-                    d="M.422 12.598l6.773 3.114a.696.696 0 0 0 .61 0l6.771-3.114a.676.676 0 0 0 .424-.66V3.844a.726.726 0 0 0-.013-.13v-.039a.727.727 0 0 0-.029-.093l-.01-.03a.726.726 0 0 0-.059-.11l-.016-.023a.727.727 0 0 0-.064-.077l-.035-.023a.726.726 0 0 0-.08-.066l-.02-.014a.727.727 0 0 0-.098-.055L7.803.07a.696.696 0 0 0-.61 0L.423 3.184a.726.726 0 0 0-.098.055l-.02.014a.727.727 0 0 0-.08.066L.2 3.344a.727.727 0 0 0-.064.077l-.016.023a.726.726 0 0 0-.058.11l-.02.028a.727.727 0 0 0-.03.093v.038A.726.726 0 0 0 0 3.844v8.094c0 .31.14.53.422.66zm1.031-7.617l5.319 2.45v6.493l-5.319-2.451V4.98zm6.774 8.942V7.43l5.318-2.45v6.493l-5.318 2.449zM7.499 1.525l5.035 2.32-5.035 2.318-5.034-2.319 5.034-2.319z" />
-                    <!-- eslint-enable max-len -->
-                </svg>{{ $t(`collections-${name}`) }}</router-link>
+              <li class="warning">
+                <router-link to="/settings">
+                  <i class="material-icons icon">settings</i>
+                  {{ $t('admin_settings') }}
+                </router-link>
+              </li>
+              <li>
+                <a href="https://getdirectus.com">
+                  <i class="material-icons icon">help</i>
+                  {{ $t('help_and_docs') }}
+                </a>
               </li>
             </ul>
           </nav>
-          <h3
-            v-if="bookmarks && bookmarks.length > 0"
-            class="style-4">{{ $t('bookmarks') }}</h3>
-          <nav v-if="bookmarks && bookmarks.length > 0">
+          <nav>
             <ul>
-              <li
-                v-for="bookmark in bookmarks"
-                :key="bookmark.id"
-                class="bookmark">
-                <button
-                  class="no-wrap"
-                  @click="toBookmark(bookmark)">
-                <i class="material-icons icon">bookmark_outline</i>{{ bookmark.title }}</button>
-                <button v-tooltip="$t('delete_bookmark')" @click="deleteBookmark(bookmark.id)">
-                  <i class="material-icons">remove_circle_outline</i>
+              <li>
+                <router-link to="/files">
+                  <i class="material-icons icon">collections</i>
+                  {{ $t('file_library') }}
+                </router-link>
+              </li>
+              <li>
+                <router-link to="/users">
+                  <i class="material-icons icon">person</i>
+                  {{ $t('user_directory') }}
+                </router-link>
+              </li>
+            </ul>
+          </nav>
+          <nav>
+            <ul>
+              <li>
+                <router-link to="/activity">
+                  <i class="material-icons icon">notifications</i>
+                  {{ $t('activity') }}
+                </router-link>
+              </li>
+              <li>
+                <router-link :to="`/users/${currentUserID}`">
+                  <i class="material-icons icon">person</i>
+                  {{ $t('my_profile') }}
+                </router-link>
+              </li>
+              <li>
+                <button @click="signOutActive = true">
+                  <i class="material-icons icon">exit_to_app</i>
+                  {{ $t('sign_out') }}
                 </button>
               </li>
             </ul>
           </nav>
-        </section>
-        <section class="user-menu">
-          <header>
-            <button @click="toggleUserMenu()">
-              <v-avatar
-                :src="avatarURL"
-                :alt="fullName"
-                :indicator="true"
-                class="avatar" />
-              <span>{{ fullName }}</span>
-              <i class="material-icons">more_vert</i>
-            </button>
-          </header>
-          <div class="links">
-            <nav>
-              <ul>
-                <li class="warning">
-                  <router-link to="/settings">
-                    <i class="material-icons icon">settings</i>
-                    {{ $t('admin_settings') }}
-                  </router-link>
-                </li>
-                <li>
-                  <a href="https://getdirectus.com">
-                    <i class="material-icons icon">help</i>
-                    {{ $t('help_and_docs') }}
-                  </a>
-                </li>
-              </ul>
-            </nav>
-            <nav>
-              <ul>
-                <li>
-                  <router-link to="/files">
-                    <i class="material-icons icon">collections</i>
-                    {{ $t('file_library') }}
-                  </router-link>
-                </li>
-                <li>
-                  <router-link to="/users">
-                    <i class="material-icons icon">person</i>
-                    {{ $t('user_directory') }}
-                  </router-link>
-                </li>
-              </ul>
-            </nav>
-            <nav>
-              <ul>
-                <li>
-                  <router-link to="/activity">
-                    <i class="material-icons icon">notifications</i>
-                    {{ $t('activity') }}
-                  </router-link>
-                </li>
-                <li>
-                  <router-link :to="`/users/${currentUserID}`">
-                    <i class="material-icons icon">person</i>
-                    {{ $t('my_profile') }}
-                  </router-link>
-                </li>
-                <li>
-                  <button @click="signOutActive = true">
-                    <i class="material-icons icon">exit_to_app</i>
-                    {{ $t('sign_out') }}
-                  </button>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </section>
-      </focus-lock>
+        </div>
+      </section>
     </aside>
   </transition>
 </template>
 
 <script>
-import FocusLock from "vue-focus-lock";
 import VSignal from "../components/VSignal.vue";
 
 export default {
   name: "nav-sidebar",
   components: {
-    FocusLock,
     VSignal
   },
   props: {

@@ -1,21 +1,13 @@
 <template>
   <transition name="info">
     <aside class="info-sidebar">
-      <portal-target
-        v-if="hasSystemContent"
-        name="info-sidebar-system"
-        class="system" />
-      <portal-target name="info-sidebar" />
     </aside>
   </transition>
 </template>
 
 <script>
-import FocusLock from "vue-focus-lock";
-
 export default {
   name: "info-sidebar",
-  components: { FocusLock },
   props: {
     active: {
       type: Boolean,
@@ -23,9 +15,6 @@ export default {
     }
   },
   computed: {
-    hasSystemContent() {
-      return Wormhole.hasContentFor("info-sidebar-system");
-    },
     overlay() {
       return this.$mq === "small" || this.$mq === "medium";
     }

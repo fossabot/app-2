@@ -14,40 +14,38 @@
           aria-describedby="modal-description"
           role="dialog"
           @keydown.esc="actionRequired ? null : $emit('close')">
-          <focus-lock>
-            <div role="document">
-              <div
-                id="modal-description"
-                class="screen-reader-offscreen">
-                {{ $t('dialog_beginning') }} {{ actionRequired ? null : $t('esc_cancel') }}
-              </div>
-              <header>
-                <h1
-                  id="modal-title"
-                  class="style-1">{{ title }}</h1>
-                <button
-                  v-if="!actionRequired && !simple"
-                  @click="$emit('close')"><i class="material-icons">close</i></button>
-              </header>
-              <div
-                v-if="!simple"
-                class="body">
-                <slot />
-              </div>
-              <div class="footer">
-                <slot name="footer">
-                  <button
-                    v-if="!actionRequired"
-                    @click="$emit('close')">{{ cancel || $t('cancel') }}</button>
-                  <v-button
-                    :bg="okBg"
-                    :color="okColor"
-                    class="confirm"
-                    @click="$emit('confirm')">{{ ok || $t('ok') }}</v-button>
-                </slot>
-              </div>
+          <div role="document">
+            <div
+              id="modal-description"
+              class="screen-reader-offscreen">
+              {{ $t('dialog_beginning') }} {{ actionRequired ? null : $t('esc_cancel') }}
             </div>
-          </focus-lock>
+            <header>
+              <h1
+                id="modal-title"
+                class="style-1">{{ title }}</h1>
+              <button
+                v-if="!actionRequired && !simple"
+                @click="$emit('close')"><i class="material-icons">close</i></button>
+            </header>
+            <div
+              v-if="!simple"
+              class="body">
+              <slot />
+            </div>
+            <div class="footer">
+              <slot name="footer">
+                <button
+                  v-if="!actionRequired"
+                  @click="$emit('close')">{{ cancel || $t('cancel') }}</button>
+                <v-button
+                  :bg="okBg"
+                  :color="okColor"
+                  class="confirm"
+                  @click="$emit('confirm')">{{ ok || $t('ok') }}</v-button>
+              </slot>
+            </div>
+          </div>
         </aside>
       </div>
     </div>
@@ -55,14 +53,10 @@
 </template>
 
 <script>
-import FocusLock from "vue-focus-lock";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 export default {
   name: "v-modal",
-  components: {
-    FocusLock
-  },
   props: {
     actionRequired: {
       type: Boolean,
