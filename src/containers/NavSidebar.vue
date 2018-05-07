@@ -16,7 +16,6 @@
         @cancel="signOutActive = false"/>
 
       <button
-        v-if="$mq === 'small'"
         class="close"
         @click="$emit('toggleNav', false)">Close nav</button>
       <section class="logo">
@@ -231,9 +230,6 @@ export default {
     },
     currentUserID() {
       return this.$store.state.me.data && this.$store.state.me.data.id;
-    },
-    overlay() {
-      return this.$mq === "small";
     }
   },
   methods: {

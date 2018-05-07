@@ -1,5 +1,4 @@
 import Vue from "vue";
-import VueMQ from "vue-mq";
 import lodash from "lodash";
 import Notifications from "vue-notification";
 import VueDraggable from "vuedraggable";
@@ -40,14 +39,6 @@ Vue.config.productionTip = false;
 Object.defineProperty(Vue.prototype, "$lodash", { value: lodash });
 Object.defineProperty(Vue.prototype, "$api", { value: api });
 
-Vue.use(VueMQ, {
-  breakpoints: {
-    small: 800,
-    medium: 1000,
-    large: 1200,
-    extraLarge: Infinity
-  }
-});
 Vue.use(Notifications);
 Vue.component("draggable", VueDraggable);
 Vue.use(VTooltip, {

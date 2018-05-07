@@ -14,11 +14,6 @@ export default {
       default: false
     }
   },
-  computed: {
-    overlay() {
-      return this.$mq === "small" || this.$mq === "medium";
-    }
-  }
 };
 </script>
 

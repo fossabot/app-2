@@ -1,16 +1,13 @@
 <template>
   <div
-    :class="{ full, open }"
+    :class="{ open }"
     class="search-filter">
     <header-button
-      v-if="!full"
       :seek-attention="hasFilters"
       icon="filter_list"
       @click="open = !open">Filter</header-button>
 
-    <div
-      v-if="full"
-      class="wrapper">
+    <div class="wrapper">
       <i class="material-icons">search</i>
       <input
         ref="searchInput"
@@ -40,7 +37,7 @@
         v-show="open"
         class="dropdown">
         <div
-          v-if="!full"
+          v-if=""
           class="field">
           <v-input
             :placeholder="placeholder"
@@ -93,7 +90,7 @@
     </transition>
 
     <v-blocker
-      v-if="!full && open"
+      v-if="open"
       :z-index="18"
       class="blocker"
       @click="open = !open" />
@@ -159,9 +156,6 @@ export default {
         return true;
 
       return false;
-    },
-    full() {
-      return this.$mq === "extraLarge";
     }
   },
   created() {
@@ -306,7 +300,7 @@ export default {
   opacity: 0;
 }
 
-.search-filter.full {
+.search-filter {
   margin-right: 10px;
   position: relative;
 
