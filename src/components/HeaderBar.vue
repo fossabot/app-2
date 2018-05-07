@@ -49,20 +49,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.nav-toggle {
-  background-color: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 0;
-  margin-right: 20px;
-  cursor: pointer;
-  transition: opacity 140ms var(--transition);
-
-  &:hover {
-    opacity: 0.6;
-  }
-}
-
 .header-bar {
   background-color: black;
   background-color: var(--darkest-gray);
@@ -76,31 +62,5 @@ export default {
   align-items: center;
   z-index: 20;
   padding-left: 20px;
-
-  .title {
-    flex-grow: 1;
-    color: var(--white);
-    margin-right: 20px;
-
-    display: flex;
-    align-items: center;
-  }
-
-  @media (min-width: 50em) {
-    width: calc(100% - var(--nav-sidebar-width));
-
-    .nav-toggle {
-      display: none;
-    }
-  }
-}
-
-.buttons {
-  display: flex;
-  height: 100%;
-}
-
-.button {
-  flex-shrink: 0;
 }
 </style>
