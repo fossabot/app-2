@@ -36,7 +36,8 @@ export default {
     VLogo,
     ProjectSwitcher,
     NavMenu,
-    UserMenu
+    UserMenu,
+    NavBookmarks
   },
   props: {
     active: {
