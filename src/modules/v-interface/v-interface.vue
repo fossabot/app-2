@@ -10,7 +10,7 @@
     :loading="loading"
     :options="optionsWithDefaults"
     :new-item="newItem"
-    class="interface-extension"
+    class="v-interface"
     @input="$emit('input', $event)"
     @setfield="$emit('setfield', $event)">
     <slot />
@@ -21,11 +21,11 @@
 import Vue from "vue";
 import loadExtension from "../../helpers/load-extension";
 import componentExists from "../../helpers/component-exists";
-import InterfaceFallback from "./InterfaceFallback.vue";
-import InterfaceLoading from "./InterfaceLoading.vue";
+import InterfaceFallback from "./interface-fallback.vue";
+import InterfaceLoading from "./interface-loading.vue";
 
 export default {
-  name: "interface-extension",
+  name: "v-interface",
   props: {
     id: {
       type: String,

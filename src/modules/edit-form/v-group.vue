@@ -1,5 +1,5 @@
 <template>
-  <interface-extension
+  <v-interface
     :id="field.field"
     :name="field.field"
     :options="field.options"
@@ -26,7 +26,7 @@
           @stageValue="$emit('stageValue', $event)" />
       </div>
     </div>
-  </interface-extension>
+  </v-interface>
 </template>
 
 <script>

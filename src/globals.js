@@ -4,6 +4,7 @@ import Spinner from "vue-simple-spinner";
 import HeaderBar from "./modules/header-bar/header-bar.vue";
 import NavSidebar from "./modules/nav-sidebar/nav-sidebar.vue";
 import EditForm from "./modules/edit-form/edit-form.vue";
+import VInterface from "./modules/v-interface/v-interface.vue";
 
 import InvisibleLabel from "./components/globals/InvisibleLabel.vue";
 import VModal from "./components/globals/VModal.vue";
@@ -22,7 +23,6 @@ import VSlider from "./components/globals/VSlider.vue";
 import VTable from "./components/globals/VTable.vue";
 import VTextarea from "./components/globals/VTextarea.vue";
 
-import InterfaceExtension from "./components/extensions/InterfaceExtension.vue";
 import ReadonlyExtension from "./components/extensions/ReadonlyExtension.vue";
 import ListingExtension from "./components/extensions/ListingExtension.vue";
 import ListingOptionsExtension from "./components/extensions/ListingOptionsExtension.vue";
@@ -30,8 +30,8 @@ import ListingOptionsExtension from "./components/extensions/ListingOptionsExten
 Vue.component("header-bar", HeaderBar);
 Vue.component("nav-sidebar", NavSidebar);
 Vue.component("edit-form", EditForm);
+Vue.component("v-interface", VInterface);
 
-Vue.component("interface-extension", InterfaceExtension);
 Vue.component("invisible-label", InvisibleLabel);
 Vue.component("listing-extension", ListingExtension);
 Vue.component("listing-options-extension", ListingOptionsExtension);
