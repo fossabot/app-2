@@ -19,6 +19,15 @@ import VSelect from "./components/form-inputs/v-select.vue";
 import VSlider from "./components/form-inputs/v-slider.vue";
 import VTextarea from "./components/form-inputs/v-textarea.vue";
 
+import VModal from "./components/modals/v-modal.vue";
+
+import VTable from "./components/v-table/v-table.vue";
+
+import VAvatar from "./components/v-avatar.vue";
+import VCard from "./components/v-card.vue";
+import VDetails from "./components/v-details.vue";
+import VNotice from "./components/v-notice.vue";
+
 Vue.component("header-bar", HeaderBar);
 Vue.component("nav-sidebar", NavSidebar);
 Vue.component("edit-form", EditForm);
@@ -34,5 +43,15 @@ Vue.component("v-button", VButton);
 Vue.component("v-checkbox", VCheckbox);
 Vue.component("v-input", VInput);
 Vue.component("v-radio", VRadio);
+Vue.component("v-select", VSelect);
 Vue.component("v-slider", VSlider);
 Vue.component("v-textarea", VTextarea);
+
+Vue.component("v-modal", VModal);
+
+Vue.component("v-table", VTable);
+
+Vue.component("v-avatar", VAvatar);
+Vue.component("v-card", VCard);
+Vue.component("v-details", VDetails);
+Vue.component("v-notice", VNotice);
