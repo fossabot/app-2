@@ -100,7 +100,7 @@
       :body="$t('empty_collection_body')"
       icon="web_asset" />
 
-    <listing-extension
+    <v-listing
       v-else-if="!hydrating && !noResults && items.length > 0"
       :id="viewType"
       :primary-key-field="primaryKeyField"
