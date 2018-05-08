@@ -18,6 +18,9 @@
       <button
         class="close"
         @click="$emit('toggleNav', false)">Close nav</button>
+
+      <v-logo class="logo" />
+
       <section class="content">
         <button
           class="project-switcher"
@@ -138,11 +141,13 @@
 
 <script>
 import VSignal from "../components/VSignal.vue";
+import VLogo from "../components/VLogo.vue";
 
 export default {
   name: "nav-sidebar",
   components: {
-    VSignal
+    VSignal,
+    VLogo
   },
   props: {
     active: {
@@ -243,7 +248,6 @@ aside {
   left: 0;
   height: 100%;
   z-index: 30;
-  transition: var(--slow) var(--transition-out);
 
   > div {
     height: 100%;
@@ -253,6 +257,8 @@ aside {
     position: absolute;
     z-index: 15;
     left: -999px;
+    background-color: yellow;
+    padding: 5px;
 
     .user-is-tabbing &:focus {
       top: 13px;
@@ -260,6 +266,7 @@ aside {
     }
   }
 }
+
 
 h3 {
   margin-bottom: 5px;

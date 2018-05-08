@@ -29,11 +29,12 @@ export default {
   },
   created() {
     if (this.customLogoExists) {
+      const logoID = this.$store.state.settings.data.logo;
       // NOTE: The api should return the logo relational from directus_settings. See directus/api#121
       this.$api
         .getItem("directus_files", logoID)
         .then(res => res.data.storage.full_url)
-        .then(url => (this.customLogo = url))
+        .then(url => (this.customLogoPath = url))
         .catch(console.error);
     }
   },
@@ -41,14 +42,17 @@ export default {
     customLogoExists() {
       return Boolean(this.$store.state.settings.data.logo);
     },
+    projectName() {
+      return this.$store.state.auth.projectName;
+    },
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .v-logo {
-  width: 100%;
-  height: 100%;
+  width: var(--nav-sidebar-width);
+  height: var(--header-height);
   background-color: var(--accent);
   padding: 10px;
   display: grid;
