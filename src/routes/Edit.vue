@@ -55,13 +55,11 @@
 </template>
 
 <script>
-import EditForm from "../containers/EditForm.vue";
 import ActivityOverview from "../containers/ActivityOverview.vue";
 
 export default {
   name: "edit",
   components: {
-    EditForm,
     ActivityOverview
   },
   props: {

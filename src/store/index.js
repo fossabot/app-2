@@ -8,8 +8,6 @@ import auth from "./modules/auth/";
 import collections from "./modules/collections";
 import me from "./modules/me";
 import settings from "./modules/settings";
-import fields from "./modules/fields";
-import listingPreferences from "./modules/listing-preferences";
 import extensions from "./modules/extensions";
 import edits from "./modules/edits";
 import bookmarks from "./modules/bookmarks";
@@ -46,8 +44,6 @@ const store = new Vuex.Store({
     collections,
     me,
     settings,
-    fields,
-    listingPreferences,
     extensions,
     edits,
     bookmarks

@@ -72,13 +72,8 @@
 </template>
 
 <script>
-import EditForm from "./EditForm.vue";
-
 export default {
   name: "activity-overview",
-  components: {
-    EditForm
-  },
   props: {
     collection: {
       type: String,

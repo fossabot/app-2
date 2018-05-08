@@ -13,13 +13,8 @@
 </template>
 
 <script>
-import EditForm from "../containers/EditForm.vue";
-
 export default {
   name: "settings-global",
-  components: {
-    EditForm
-  },
   data() {
     return {
       hydrating: false,

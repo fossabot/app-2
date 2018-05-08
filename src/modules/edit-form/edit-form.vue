@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import VField from "../components/edit/VField.vue";
-import VGroup from "../components/edit/VGroup.vue";
+import VField from "./v-field.vue";
+import VGroup from "./v-group.vue";
 
 export default {
   name: "edit-form",

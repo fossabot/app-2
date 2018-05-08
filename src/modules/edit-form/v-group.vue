@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import VField from "./VField.vue";
+import VField from "./v-field.vue";
 
 export default {
   name: "v-group",
