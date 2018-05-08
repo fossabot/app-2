@@ -16,9 +16,7 @@
     class="directus">
 
     <div v-if="!hydrating">
-      <main>
-        <router-view class="page-root" />
-      </main>
+      <router-view class="page-root" />
 
       <v-confirm
         v-if="unsavedChanges"
@@ -72,11 +70,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-main {
-  width: 100%;
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
-}
-</style>

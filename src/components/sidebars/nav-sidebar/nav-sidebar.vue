@@ -131,8 +131,6 @@ aside {
   }
 }
 
-
-
 .content,
 .user-menu {
   position: relative;
@@ -224,5 +222,11 @@ aside {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+</style>
+
+<style>
+body {
+  padding-left: var(--nav-sidebar-width);
 }
 </style>

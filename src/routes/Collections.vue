@@ -1,13 +1,7 @@
 <template>
   <div class="collections">
-    <portal to="header-title">
-      <h1 class="style-1"><breadcrumb
-        :links="[{
-          name: $t('collections'),
-          path: '/collections'
-        }]"
-      /></h1>
-    </portal>
+    <header-bar />
+    <nav-sidebar />
     <v-table
       :items="items"
       :columns="fields"

@@ -2,7 +2,9 @@ import Vue from "vue";
 import Router from "vue-router";
 import api from "./api";
 import store from "./store";
+
 import Login from "./routes/login.vue";
+import Collections from "./routes/collections.vue";
 import NotFound from "./routes/not-found.vue";
 
 Vue.use(Router);
@@ -10,18 +12,14 @@ Vue.use(Router);
 const router = new Router({
   mode: "history",
   routes: [
-    // {
-    //   path: "/modals",
-    //   component: ModalDebug
-    // },
-    // {
-    //   path: "/",
-    //   redirect: "/collections"
-    // },
-    // {
-    //   path: "/collections",
-    //   component: Collections
-    // },
+    {
+      path: "/",
+      redirect: "/collections"
+    },
+    {
+      path: "/collections",
+      component: Collections
+    },
     // {
     //   path: "/collections/:collection",
     //   props: true,

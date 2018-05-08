@@ -60,7 +60,7 @@ export default {
   display: flex;
   align-items: center;
   z-index: 20;
-  padding-left: 20px;
+  padding-left: calc(var(--nav-sidebar-width) + 20px);
 
   .title {
     color: var(--darker-gray);
@@ -70,8 +70,20 @@ export default {
     height: 20px;
   }
 
-  h1.title {
+  .breadcrumb {
+    list-style: none;
+    padding: 0;
+  }
+
+  h1.title,
+  .title h1 {
     color: var(--white);
   }
+}
+</style>
+
+<style>
+body {
+  padding-top: var(--header-height);
 }
 </style>
