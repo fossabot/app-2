@@ -59,17 +59,10 @@ export default {
 }
 
 .icon {
-  font-size: 18px;
   width: 15px;
   height: 18px;
   margin-right: 10px;
   color: var(--light-gray);
   fill: var(--light-gray);
-
-  /* Forces left-alignment of material-icons */
-  display: inline-flex;
-  justify-content: flex-end;
-  align-items: center;
-  vertical-align: -5px;
 }
 </style>
