@@ -35,75 +35,7 @@
           </ul>
         </nav>
       </section>
-      <section class="user-menu">
-        <header>
-          <button @click="toggleUserMenu()">
-            <v-avatar
-              :src="avatarURL"
-              :alt="fullName"
-              :indicator="true"
-              class="avatar" />
-            <span>{{ fullName }}</span>
-            <i class="material-icons">more_vert</i>
-          </button>
-        </header>
-        <div class="links">
-          <nav>
-            <ul>
-              <li class="warning">
-                <router-link to="/settings">
-                  <i class="material-icons icon">settings</i>
-                  {{ $t('admin_settings') }}
-                </router-link>
-              </li>
-              <li>
-                <a href="https://getdirectus.com">
-                  <i class="material-icons icon">help</i>
-                  {{ $t('help_and_docs') }}
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <nav>
-            <ul>
-              <li>
-                <router-link to="/files">
-                  <i class="material-icons icon">collections</i>
-                  {{ $t('file_library') }}
-                </router-link>
-              </li>
-              <li>
-                <router-link to="/users">
-                  <i class="material-icons icon">person</i>
-                  {{ $t('user_directory') }}
-                </router-link>
-              </li>
-            </ul>
-          </nav>
-          <nav>
-            <ul>
-              <li>
-                <router-link to="/activity">
-                  <i class="material-icons icon">notifications</i>
-                  {{ $t('activity') }}
-                </router-link>
-              </li>
-              <li>
-                <router-link :to="`/users/${currentUserID}`">
-                  <i class="material-icons icon">person</i>
-                  {{ $t('my_profile') }}
-                </router-link>
-              </li>
-              <li>
-                <button @click="signOutActive = true">
-                  <i class="material-icons icon">exit_to_app</i>
-                  {{ $t('sign_out') }}
-                </button>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </section>
+      <user-menu />
     </aside>
   </transition>
 </template>
@@ -112,13 +44,15 @@
 import VLogo from "./v-logo.vue";
 import ProjectSwitcher from "./project-switcher.vue";
 import NavMenu from "./nav-menu.vue";
+import UserMenu from "./user-menu.vue";
 
 export default {
   name: "nav-sidebar",
   components: {
     VLogo,
     ProjectSwitcher,
-    NavMenu
+    NavMenu,
+    UserMenu
   },
   props: {
     active: {
@@ -147,31 +81,6 @@ export default {
     projectName() {
       return this.$store.state.auth.projectName;
     },
-    avatarURL() {
-      if (this.$store.state.me.avatar) {
-        // TODO: This is basically pseudo code. Hasn't been tested yet
-        const { url } = this.$store.state.auth;
-        const { filename } = this.$store.state.me.data.avatar;
-        return `${url}/${filename}`;
-      }
-
-      return this.$helpers.gravatar(this.email, { size: 40 });
-    },
-    email() {
-      return this.$store.state.me.data && this.$store.state.me.data.email;
-    },
-    fullName() {
-      const firstName =
-        this.$store.state.me.data && this.$store.state.me.data.first_name;
-
-      const lastName =
-        this.$store.state.me.data && this.$store.state.me.data.last_name;
-
-      return `${firstName} ${lastName}`;
-    },
-    currentUserID() {
-      return this.$store.state.me.data && this.$store.state.me.data.id;
-    }
   },
   methods: {
     logout() {
@@ -291,62 +200,6 @@ aside {
 
   &:hover button:last-child {
     opacity: 1;
-  }
-}
-
-.user-menu {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  transform: translateY(calc(100% - var(--header-height)));
-  transition: transform var(--medium) var(--transition-out);
-  will-change: transform;
-
-  &:hover,
-  .user-is-tabbing &:focus,
-  .user-is-tabbing &:focus-within {
-    transform: translateY(0);
-    transition: transform var(--slow) var(--transition-in);
-  }
-
-  header {
-    position: sticky;
-    top: 0;
-    background-color: var(--white);
-    padding: 10px 0;
-    border-top: 1px solid var(--lightest-gray);
-    border-bottom: 1px solid var(--lightest-gray);
-    margin-bottom: 10px;
-    z-index: +1;
-
-    .avatar {
-      margin-right: 10px;
-    }
-
-    button {
-      display: flex;
-      align-items: center;
-    }
-
-    i {
-      position: absolute;
-      right: -10px;
-      color: inherit;
-    }
-  }
-  .warning {
-    a,
-    i {
-      color: var(--warning);
-    }
-  }
-
-  .warning:hover {
-    a,
-    i {
-      color: var(--warning-dark);
-    }
   }
 }
 

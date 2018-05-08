@@ -1,11 +1,11 @@
 <template>
   <div class="nav-menu">
-    <h3 class="style-4">{{ title }}</h3>
+    <h3 v-if="title" class="style-4">{{ title }}</h3>
     <nav>
       <ul>
         <li v-for="({ path, name, icon }) in links" :key="path">
           <router-link :to="path">
-            <i v-if="icon" class="material-icons">{{ icon }}</i>
+            <i v-if="icon" class="material-icons icon">{{ icon }}</i>
             <svg
               v-else
               class="icon"
@@ -27,7 +27,7 @@ export default {
   props: {
     title: {
       type: String,
-      required: true
+      default: null
     },
     links: {
       type: Array,
@@ -103,7 +103,7 @@ nav > ul > li > * {
   padding: 5px 0;
 }
 
-nav:not(:last-child) {
+nav {
   padding-bottom: 10px;
   margin-bottom: 10px;
   border-bottom: 1px solid var(--lightest-gray);
