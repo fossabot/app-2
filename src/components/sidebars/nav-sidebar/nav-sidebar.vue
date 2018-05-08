@@ -1,16 +1,8 @@
 <template>
   <transition name="nav">
     <aside class="nav-sidebar">
-
-      <v-confirm
-        v-if="signOutActive"
-        :message="$t('sign_out_confirm')"
-        :confirm-text="$t('sign_out')"
-        @confirm="$router.push('/logout')"
-        @cancel="signOutActive = false"/>
-
       <button
-        class="close"
+        class="a11y-close"
         @click="$emit('toggleNav', false)">Close nav</button>
 
       <v-logo class="logo" />
@@ -240,7 +232,7 @@ aside {
     height: 100%;
   }
 
-  & .close {
+  & .a11y-close {
     position: absolute;
     z-index: 15;
     left: -999px;
