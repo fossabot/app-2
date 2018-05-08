@@ -4,10 +4,10 @@ import Spinner from "vue-simple-spinner";
 import HeaderBar from "./components/header-bar/header-bar.vue";
 import NavSidebar from "./components/nav-sidebar/nav-sidebar.vue";
 import EditForm from "./components/edit-form/edit-form.vue";
-import VInterface from "./components/v-interface/v-interface.vue";
-import VListing from "./components/v-listing/v-listing.vue";
-import VListingOptions from "./components/v-listing-options/v-listing-options.vue";
-import VReadonly from "./components/v-readonly/v-readonly.vue";
+import VInterface from "./components/extensions/v-interface/v-interface.vue";
+import VListing from "./components/extensions/v-listing/v-listing.vue";
+import VListingOptions from "./components/extensions/v-listing-options/v-listing-options.vue";
+import VReadonly from "./components/extensions/v-readonly/v-readonly.vue";
 
 // import InvisibleLabel from "./components-old/globals/InvisibleLabel.vue";
 // import VModal from "./components-old/globals/VModal.vue";
