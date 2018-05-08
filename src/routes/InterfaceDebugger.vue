@@ -33,7 +33,7 @@
 
         <label>Listing</label>
         <div class="listing">
-          <readonly-extension
+          <v-readonly
             v-model="value"
             :id="id"
             :name="id"

@@ -7,6 +7,7 @@ import EditForm from "./components/edit-form/edit-form.vue";
 import VInterface from "./components/v-interface/v-interface.vue";
 import VListing from "./components/v-listing/v-listing.vue";
 import VListingOptions from "./components/v-listing-options/v-listing-options.vue";
+import VReadonly from "./components/v-readonly/v-readonly.vue";
 
 // import InvisibleLabel from "./components-old/globals/InvisibleLabel.vue";
 // import VModal from "./components-old/globals/VModal.vue";
@@ -34,9 +35,10 @@ Vue.component("edit-form", EditForm);
 Vue.component("v-interface", VInterface);
 Vue.component("v-listing", VListing);
 Vue.component("v-listing-options", VListingOptions);
+Vue.component("v-readonly", VReadonly);
 
 // Vue.component("invisible-label", InvisibleLabel);
-// Vue.component("readonly-extension", ReadonlyExtension);
+// Vue.component("v-readonly", ReadonlyExtension);
 // Vue.component("spinner", Spinner);
 // Vue.component("v-avatar", VAvatar);
 // Vue.component("v-alert", VAlert);

@@ -9,7 +9,7 @@
     :required="required"
     :loading="loading"
     :options="optionsWithDefaults"
-    class="readonly-extension" />
+    class="v-readonly" />
 </template>
 
 <script>
@@ -20,7 +20,7 @@ import ReadonlyFallback from "./ReadonlyFallback.vue";
 import ReadonlyLoading from "./ReadonlyLoading.vue";
 
 export default {
-  name: "readonly-extension",
+  name: "v-readonly",
   props: {
     id: {
       type: String,
