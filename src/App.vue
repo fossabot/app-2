@@ -36,12 +36,12 @@
 </template>
 
 <script>
-import VError from "./components/VError.vue";
+import VNotice from "./components/v-notice.vue";
 
 export default {
   name: "directus",
   components: {
-    VError
+    VNotice
   },
   computed: {
     publicRoute() {

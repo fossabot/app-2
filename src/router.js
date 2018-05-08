@@ -2,20 +2,8 @@ import Vue from "vue";
 import Router from "vue-router";
 import api from "./api";
 import store from "./store";
-// import Collections from "./routes/Collections.vue";
-// import ItemListing from "./routes/ItemListing.vue";
-// import ItemListingGuard from "./routes/ItemListingGuard.vue";
-// import Edit from "./routes/Edit.vue";
-// import EditGuard from "./routes/EditGuard.vue";
-import Login from "./routes/Login.vue";
-import NotFound from "./routes/NotFound.vue";
-// import Interfaces from "./routes/Interfaces.vue";
-// import InterfaceDebugger from "./routes/InterfaceDebugger.vue";
-// import Debug from "./routes/Debug.vue";
-// import Settings from "./routes/Settings.vue";
-// import SettingsGlobal from "./routes/SettingsGlobal.vue";
-
-// import ModalDebug from "./routes/ModalDebug.vue";
+import Login from "./routes/login.vue";
+import NotFound from "./routes/not-found.vue";
 
 Vue.use(Router);
 

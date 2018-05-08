@@ -11,7 +11,7 @@
       <img
         v-show="directusLogoLoaded && !customLogoExists"
         @load="directusLogoLoaded = true"
-        src="../../assets/logo.svg"
+        src="../../../assets/logo.svg"
         alt="Directus Logo">
     </transition>
   </div>

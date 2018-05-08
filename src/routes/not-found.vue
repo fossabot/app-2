@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import VError from "../components/VError.vue";
+import VNotice from "../components/v-notice.vue";
 
 export default {
   name: "not-found",
   components: {
-    VError
+    VNotice
   }
 };
 </script>

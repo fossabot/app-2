@@ -133,13 +133,13 @@
 <script>
 import formatFilters from "../helpers/format-filters";
 import SearchFilter from "../components/SearchFilter.vue";
-import VError from "../components/VError.vue";
+import VNotice from "../components/VNotice.vue";
 
 export default {
   name: "item-listing",
   components: {
     SearchFilter,
-    VError
+    VNotice
   },
   props: {
     collection: {
