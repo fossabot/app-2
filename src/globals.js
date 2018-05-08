@@ -1,10 +1,10 @@
 import Vue from "vue";
 import Spinner from "vue-simple-spinner";
 
-import HeaderBar from "./components/HeaderBar.vue";
+import HeaderBar from "./modules/header-bar/header-bar.vue";
+
 import NavSidebar from "./containers/NavSidebar.vue";
 
-import HeaderButton from "./components/globals/HeaderButton.vue";
 import InvisibleLabel from "./components/globals/InvisibleLabel.vue";
 import VModal from "./components/globals/VModal.vue";
 import VAvatar from "./components/globals/VAvatar.vue";
@@ -30,7 +30,6 @@ import ListingOptionsExtension from "./components/extensions/ListingOptionsExten
 Vue.component("header-bar", HeaderBar);
 Vue.component("nav-sidebar", NavSidebar);
 
-Vue.component("header-button", HeaderButton);
 Vue.component("interface-extension", InterfaceExtension);
 Vue.component("invisible-label", InvisibleLabel);
 Vue.component("listing-extension", ListingExtension);
