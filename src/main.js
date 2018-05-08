@@ -8,7 +8,7 @@ import "./assets/global.scss";
 import "./assets/tooltip.scss";
 import "./globals";
 import "./register-service-worker";
-import App from "./App.vue";
+import App from "./app.vue";
 
 import router from "./router";
 import { i18n, loadLanguageAsync } from "./lang/";
