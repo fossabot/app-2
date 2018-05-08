@@ -1,14 +1,17 @@
 <template>
-  <div class="v-avatar">
-    <img
-      :src="src"
-      :alt="alt"
-      :style="{ borderColor: `var(--${color})` }">
+  <div class="v-avatar" :class="{ loading }">
+    <div class="wrapper" :style="{ borderColor: `var(--${color})` }">
+      <img
+        v-show="!error && loading === false"
+        :src="src"
+        :alt="alt"
+        @load="loading = false"
+        @error="onImageLoadingError">
+      <i v-if="error" class="material-icons">person</i>
+    </div>
     <div
       v-if="indicator"
-      :style="{
-        backgroundColor: `var(--${color})`
-      }"
+      :style="{ backgroundColor: `var(--${color})` }"
       class="indicator"/>
   </div>
 </template>
@@ -37,23 +40,56 @@ export default {
       type: Number,
       default: 40
     }
+  },
+  data() {
+    return {
+      loading: true,
+      error: false
+    };
+  },
+  methods: {
+    onImageLoadingError(error) {
+      this.error = error;
+      this.loading = false;
+    }
   }
 };
 </script>
 
-<style scoped>
-div {
+<style lang="scss" scoped>
+.v-avatar {
   position: relative;
   width: 40px;
   height: 40px;
+
+  &.loading {
+    animation: rotate 1500ms var(--transition) infinite;
+  }
+}
+
+.wrapper {
+  border-radius: 50%;
+  border: 3px solid;
+  height: 100%;
+  width: 100%;
 }
 
 img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid;
+}
+
+i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: 0;
+  margin-right: 0;
+  top: 50%;
+  transform: translateY(-55%);
+  color: var(--accent);
+  opacity: 0.7;
 }
 
 .indicator {
@@ -64,5 +100,10 @@ img {
   border: 2px solid white;
   width: 12px;
   height: 12px;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg) }
+  to { transform: rotate(360deg) }
 }
 </style>
