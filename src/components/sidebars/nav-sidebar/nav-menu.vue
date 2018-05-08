@@ -76,9 +76,7 @@ svg {
 
 a:hover,
 .content .router-link-active,
-.user-menu .router-link-exact-active,
-.bookmark button:first-child:hover,
-.user-menu button:hover {
+.user-menu .router-link-exact-active {
   color: var(--accent);
 
   i,

@@ -15,26 +15,9 @@
           name: $t(`collections-${name}`)
         }))" no-border />
 
-        <h3
-          v-if="bookmarks && bookmarks.length > 0"
-          class="style-4">{{ $t('bookmarks') }}</h3>
-        <nav v-if="bookmarks && bookmarks.length > 0">
-          <ul>
-            <li
-              v-for="bookmark in bookmarks"
-              :key="bookmark.id"
-              class="bookmark">
-              <button
-                class="no-wrap"
-                @click="toBookmark(bookmark)">
-              <i class="material-icons icon">bookmark_outline</i>{{ bookmark.title }}</button>
-              <button v-tooltip="$t('delete_bookmark')" @click="deleteBookmark(bookmark.id)">
-                <i class="material-icons">remove_circle_outline</i>
-              </button>
-            </li>
-          </ul>
-        </nav>
+        <nav-bookmarks :bookmarks="bookmarks" />
       </section>
+
       <user-menu />
     </aside>
   </transition>
@@ -45,6 +28,7 @@ import VLogo from "./v-logo.vue";
 import ProjectSwitcher from "./project-switcher.vue";
 import NavMenu from "./nav-menu.vue";
 import UserMenu from "./user-menu.vue";
+import NavBookmarks from "./nav-bookmarks.vue";
 
 export default {
   name: "nav-sidebar",
