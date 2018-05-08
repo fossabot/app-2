@@ -1,12 +1,6 @@
 <template>
   <transition name="nav">
     <aside class="nav-sidebar">
-      <v-modal
-        v-if="projectSwitcherActive"
-        :title="$t('change_project')"
-        @close="projectSwitcherActive = false">
-        Project changer form
-      </v-modal>
 
       <v-confirm
         v-if="signOutActive"
@@ -22,13 +16,7 @@
       <v-logo class="logo" />
 
       <section class="content">
-        <button
-          class="project-switcher"
-          @click="projectSwitcherActive = true">
-          <v-signal class="icon" />
-          <span class="no-wrap">{{ $store.state.auth.projectName }}</span>
-          <i class="material-icons chevron">arrow_drop_down</i>
-        </button>
+        <project-switcher />
         <h3 class="style-4">{{ $t('collections') }}</h3>
         <nav>
           <ul>
@@ -140,14 +128,14 @@
 </template>
 
 <script>
-import VSignal from "../../v-signal.vue";
 import VLogo from "./v-logo.vue";
+import ProjectSwitcher from "./project-switcher.vue";
 
 export default {
   name: "nav-sidebar",
   components: {
-    VSignal,
-    VLogo
+    VLogo,
+    ProjectSwitcher
   },
   props: {
     active: {
@@ -157,7 +145,6 @@ export default {
   },
   data() {
     return {
-      projectSwitcherActive: false,
       signOutActive: false,
     };
   },
@@ -360,29 +347,6 @@ nav:not(:last-child) {
   -webkit-overflow-scrolling: touch;
 }
 
-.project-switcher {
-  height: var(--header-height);
-  width: 100%;
-  border-bottom: 1px solid var(--lightest-gray);
-  display: flex;
-  align-items: center;
-  color: var(--accent);
-  margin-bottom: 10px;
-
-  svg {
-    fill: var(--accent);
-  }
-
-  i {
-    color: var(--accent);
-  }
-
-  span {
-    flex-grow: 1;
-    line-height: 24px;
-    text-align: left;
-  }
-}
 
 .bookmark {
   display: flex;
