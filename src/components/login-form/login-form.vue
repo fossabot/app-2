@@ -238,6 +238,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+label {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: polygon(0px 0px, 0px 0px, 0px 0px, 0px 0px);
+}
+
 .input {
   margin-bottom: 13px;
 }
