@@ -65,7 +65,7 @@
 
     <portal to="info-sidebar">
       <div class="sidebar-content">
-        <listing-options-extension
+        <v-listing-options
           v-if="hydrating === false"
           :id="viewType"
           :collection="collection"

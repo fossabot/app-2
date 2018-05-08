@@ -8,7 +8,7 @@
     :loading="loading"
     :query="query"
     :selection="selection"
-    class="listing-options-extension"
+    class="v-listing-options"
     @query="$emit('query', $event)"
     @select="$emit('select', $event)"
     @input="$emit('input', $event)" />
@@ -18,11 +18,11 @@
 import Vue from "vue";
 import loadExtension from "../../helpers/load-extension";
 import componentExists from "../../helpers/component-exists";
-import ListingOptionsFallback from "./ListingOptionsFallback.vue";
-import ListingOptionsLoading from "./ListingOptionsLoading.vue";
+import ListingOptionsFallback from "./listing-options-fallback.vue";
+import ListingOptionsLoading from "./listing-options-loading.vue";
 
 export default {
-  name: "listing-options-extension",
+  name: "v-listing-options",
   props: {
     id: {
       type: String,
