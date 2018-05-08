@@ -1,7 +1,7 @@
 <template>
   <div class="nav-menu">
     <h3 v-if="title" class="style-4">{{ title }}</h3>
-    <nav>
+    <nav :class="{ 'no-border': noBorder }">
       <ul>
         <li v-for="({ path, name, icon }) in links" :key="path">
           <router-link :to="path">
@@ -32,6 +32,10 @@ export default {
     links: {
       type: Array,
       required: true
+    },
+    noBorder: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -103,7 +107,7 @@ nav > ul > li > * {
   padding: 5px 0;
 }
 
-nav {
+nav:not(.no-border) {
   padding-bottom: 10px;
   margin-bottom: 10px;
   border-bottom: 1px solid var(--lightest-gray);

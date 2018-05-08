@@ -13,7 +13,7 @@
         <nav-menu :title="$t('collections')" :links="collectionNames.map(name => ({
           path: `/collections/${name}`,
           name: $t(`collections-${name}`)
-        }))" />
+        }))" no-border />
 
         <h3
           v-if="bookmarks && bookmarks.length > 0"
