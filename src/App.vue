@@ -4,7 +4,7 @@
     class="directus" />
 
   <div v-else-if="hydratingError">
-    <v-error
+    <v-notice
       icon="warning"
       :title="$t('server_error')"
       :body="$t('server_error_copy')"

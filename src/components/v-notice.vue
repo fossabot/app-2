@@ -1,6 +1,6 @@
 <template>
   <transition name="error">
-    <div class="v-error">
+    <div class="v-notice">
       <i
         :class="color"
         class="material-icons">{{ icon }}</i>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: "v-error",
+  name: "v-notice",
   props: {
     color: {
       type: String,
@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-error {
+.v-notice {
   display: flex;
   justify-content: center;
   align-items: center;

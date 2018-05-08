@@ -2,7 +2,7 @@
   <div class="not-found">
     <header-bar :title="$t('page_not_found')" />
     <nav-sidebar />
-    <v-error
+    <v-notice
       :title="$t('page_not_found')"
       :body="$t('page_not_found_body')"
       icon="not_interested" />

@@ -88,13 +88,13 @@
       </div>
     </portal>
 
-    <v-error
+    <v-notice
       v-if="!hydrating && noResults"
       :title="$t('no_results')"
       :body="$t('no_results_body')"
       icon="search" />
 
-    <v-error
+    <v-notice
       v-if="!hydrating && emptyCollection"
       :title="$t('empty_collection')"
       :body="$t('empty_collection_body')"
