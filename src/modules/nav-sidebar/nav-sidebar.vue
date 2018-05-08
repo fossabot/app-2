@@ -140,8 +140,8 @@
 </template>
 
 <script>
-import VSignal from "../components/VSignal.vue";
-import VLogo from "../components/VLogo.vue";
+import VSignal from "../../components/VSignal.vue";
+import VLogo from "./v-logo.vue";
 
 export default {
   name: "nav-sidebar",

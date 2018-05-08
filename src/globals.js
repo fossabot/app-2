@@ -3,7 +3,7 @@ import Spinner from "vue-simple-spinner";
 
 import HeaderBar from "./modules/header-bar/header-bar.vue";
 
-import NavSidebar from "./containers/NavSidebar.vue";
+import NavSidebar from "./modules/nav-sidebar/nav-sidebar.vue";
 
 import InvisibleLabel from "./components/globals/InvisibleLabel.vue";
 import VModal from "./components/globals/VModal.vue";
