@@ -7,7 +7,7 @@ import VTooltip from "v-tooltip";
 import "./assets/global.scss";
 import "./assets/tooltip.scss";
 import "./globals";
-import "./registerServiceWorker";
+import "./register-service-worker";
 import App from "./App.vue";
 
 import router from "./router";
