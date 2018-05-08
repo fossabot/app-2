@@ -14,10 +14,10 @@
 
 <script>
 import Vue from "vue";
-import loadExtension from "../../helpers/load-extension";
-import componentExists from "../../helpers/component-exists";
-import ReadonlyFallback from "./ReadonlyFallback.vue";
-import ReadonlyLoading from "./ReadonlyLoading.vue";
+import loadExtension from "../../../helpers/load-extension";
+import componentExists from "../../../helpers/component-exists";
+import ReadonlyFallback from "./readonly-fallback.vue";
+import ReadonlyLoading from "./readonly-loading.vue";
 
 export default {
   name: "v-readonly",

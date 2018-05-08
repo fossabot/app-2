@@ -17,8 +17,8 @@
 
 <script>
 import Vue from "vue";
-import loadExtension from "../../helpers/load-extension";
-import componentExists from "../../helpers/component-exists";
+import loadExtension from "../../../helpers/load-extension";
+import componentExists from "../../../helpers/component-exists";
 import ListingFallback from "./listing-fallback.vue";
 import ListingLoading from "./listing-loading.vue";
 

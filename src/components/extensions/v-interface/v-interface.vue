@@ -19,8 +19,8 @@
 
 <script>
 import Vue from "vue";
-import loadExtension from "../../helpers/load-extension";
-import componentExists from "../../helpers/component-exists";
+import loadExtension from "../../../helpers/load-extension";
+import componentExists from "../../../helpers/component-exists";
 import InterfaceFallback from "./interface-fallback.vue";
 import InterfaceLoading from "./interface-loading.vue";
 

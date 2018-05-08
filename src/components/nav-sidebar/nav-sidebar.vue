@@ -140,7 +140,7 @@
 </template>
 
 <script>
-import VSignal from "../../components/VSignal.vue";
+import VSignal from "../v-signal.vue";
 import VLogo from "./v-logo.vue";
 
 export default {
