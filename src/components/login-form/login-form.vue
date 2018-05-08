@@ -1,7 +1,7 @@
 <template>
   <div class="login-form">
     <form v-if="reset" @submit.prevent="resetPassword">
-      <invisible-label html-for="email">{{ $t('email_address') }}</invisible-label>
+      <label for="email">{{ $t('email_address') }}</label>
       <v-input
         id="email"
         v-model="email"
@@ -22,7 +22,7 @@
     </form>
     <form v-else @submit.prevent="login">
       <div v-if="apiUrls.length === 0">
-        <invisible-label html-for="url">{{ $t('api_url') }}</invisible-label>
+        <label for="url">{{ $t('api_url') }}</label>
         <v-input
           id="url"
           v-model="url"
@@ -47,7 +47,7 @@
           type="url" />
       </div>
 
-      <invisible-label html-for="email">{{ $t('email_address') }}</invisible-label>
+      <label for="email">{{ $t('email_address') }}</label>
       <v-input
         id="email"
         v-model="email"
@@ -58,7 +58,7 @@
         type="email"
         name="email" />
 
-      <invisible-label html-for="password">{{ $t('password') }}</invisible-label>
+      <label for="password">{{ $t('password') }}</label>
       <v-input
         id="password"
         v-model="password"
