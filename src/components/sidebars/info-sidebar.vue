@@ -1,6 +1,7 @@
 <template>
   <transition name="info">
     <aside class="info-sidebar">
+      <slot />
     </aside>
   </transition>
 </template>

@@ -2,7 +2,7 @@
   <div class="nav-sidebar">
     <v-blocker v-show="active" class="blocker" @click="disableNav" />
     <transition name="nav">
-      <aside  :class="{ active }">
+      <aside :class="{ active }">
         <button
           class="a11y-close"
           @click="disableNav">Close nav</button>
@@ -113,12 +113,12 @@ export default {
 
 <style lang="scss" scoped>
 aside {
-  width: var(--nav-sidebar-width);
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   z-index: 30;
+  max-width: var(--nav-sidebar-width);
 
   transform: translateX(-100%);
   visibility: hidden;
@@ -129,6 +129,10 @@ aside {
     transform: translateX(0);
     transition: transform var(--slow) var(--transition-in);
     visibility: visible;
+
+    @media (max-width: 800px) {
+      max-width: 80%;
+    }
   }
 
   @media (min-width: 800px) {

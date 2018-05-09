@@ -51,7 +51,6 @@ export default {
 
 <style lang="scss" scoped>
 .v-logo {
-  width: var(--nav-sidebar-width);
   height: var(--header-height);
   background-color: var(--accent);
   padding: 10px;
