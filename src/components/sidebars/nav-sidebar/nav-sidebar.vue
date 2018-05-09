@@ -159,96 +159,14 @@ aside {
   }
 }
 
-.content,
-.user-menu {
+.content {
   position: relative;
   background-color: var(--white);
   padding: 20px;
   padding-top: 0;
-}
-
-.user-menu {
-  position: relative;
-  max-height: 100vh;
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
-}
-
-.content {
   height: calc(100% - var(--header-height) - var(--header-height));
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
-}
-
-.bookmark {
-  display: flex;
-  align-items: center;
-
-  > * {
-    display: block;
-  }
-
-  & button:first-child {
-    flex-grow: 1;
-    text-align: left;
-  }
-
-  & button:last-child {
-    opacity: 0;
-    transition: opacity var(--fast) var(--transition);
-
-    i {
-      font-size: 18px;
-      vertical-align: baseline;
-      color: var(--lighter-gray);
-    }
-
-    &:hover i {
-      color: var(--danger);
-    }
-  }
-
-  &:hover button:last-child {
-    opacity: 1;
-  }
-}
-
-.nav-enter-active {
-  transition: var(--slow) var(--transition-in);
-}
-
-.nav-leave-active {
-  transition: var(--medium) var(--transition-out);
-}
-
-.nav-enter,
-.nav-leave-to {
-  transform: translateX(-100%);
-}
-
-@media (min-width: 800px) {
-  .nav-enter,
-  .nav-leave-to {
-    transform: translateX(0);
-  }
-
-  .content,
-  .user-menu {
-    box-shadow: 1px 0 0 -0px var(--lightest-gray);
-  }
-}
-
-.fade-enter-active {
-  transition: opacity var(--fast) var(--transition-in);
-}
-
-.fade-leave-active {
-  transition: opacity var(--fast) var(--transition-out);
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
 }
 </style>
 
