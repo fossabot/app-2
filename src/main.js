@@ -21,16 +21,7 @@ import "./helpers/handle-focus";
 
 // Check if the global config is setup correctly. Panic if not.
 if (!window.__DirectusConfig__) {
-  // eslint-disable-line no-underscore-dangle
-  const message = `
-
-No Directus config found.
-
-Please make sure to rename /static/config_example.js to /static/config.js and edit the config to match your project.
-
-`;
-
-  alert(message); // eslint-disable-line no-alert
+  alert(`Config file not found`); // eslint-disable-line no-alert
   throw new Error(message);
 }
 
