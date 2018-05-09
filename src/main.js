@@ -21,7 +21,8 @@ import "./helpers/handle-focus";
 
 // Check if the global config is setup correctly. Panic if not.
 if (!window.__DirectusConfig__) {
-  alert(`Config file not found`); // eslint-disable-line no-alert
+  const message = "Config file not found";
+  alert(message); // eslint-disable-line no-alert
   throw new Error(message);
 }
 
