@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'nav-bookmarks',
+  name: "nav-bookmarks",
   props: {
     bookmarks: {
       type: Array,
@@ -28,7 +28,7 @@ export default {
       default: false
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

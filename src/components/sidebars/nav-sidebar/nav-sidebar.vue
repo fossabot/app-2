@@ -47,7 +47,7 @@ export default {
   },
   data() {
     return {
-      signOutActive: false,
+      signOutActive: false
     };
   },
   computed: {
@@ -65,7 +65,7 @@ export default {
     },
     projectName() {
       return this.$store.state.auth.projectName;
-    },
+    }
   },
   methods: {
     logout() {
@@ -151,7 +151,6 @@ aside {
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
 }
-
 
 .bookmark {
   display: flex;

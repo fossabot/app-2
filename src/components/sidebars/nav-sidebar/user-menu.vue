@@ -68,9 +68,9 @@ export default {
         this.$store.state.me.data && this.$store.state.me.data.last_name;
 
       return `${firstName} ${lastName}`;
-    },
+    }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

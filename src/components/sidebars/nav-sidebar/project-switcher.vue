@@ -20,7 +20,7 @@ import VSignal from "../../v-signal.vue";
 import LoginForm from "../../login-form/login-form.vue";
 
 export default {
-  name: 'project-switcher',
+  name: "project-switcher",
   data() {
     return {
       active: false
@@ -30,7 +30,7 @@ export default {
     VSignal,
     LoginForm
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

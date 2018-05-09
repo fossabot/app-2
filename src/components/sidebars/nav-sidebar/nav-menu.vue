@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: 'nav-menu',
+  name: "nav-menu",
   props: {
     title: {
       type: String,
@@ -38,7 +38,7 @@ export default {
       default: false
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

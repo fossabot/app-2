@@ -22,7 +22,7 @@ export default {
   name: "v-logo",
   data() {
     return {
-      customLogoPath: '',
+      customLogoPath: "",
       customLogoLoaded: false,
       directusLogoLoaded: false
     };
@@ -44,7 +44,7 @@ export default {
     },
     projectName() {
       return this.$store.state.auth.projectName;
-    },
+    }
   }
 };
 </script>
