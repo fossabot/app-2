@@ -2,8 +2,7 @@
   "name": "directus",
   "version": "7.0.0-alpha.2",
   "private": true,
-  "description":
-    "Directus is an Open-Source Headless CMS & API for Managing Custom Databases",
+  "description": "Directus is an Open-Source Headless CMS & API for Managing Custom Databases",
   "contributors": [
     "Welling Guzmán <welling@rngr.org>",
     "Ben Haynes <ben@rngr.org>",
@@ -22,21 +21,22 @@
     "@vue/eslint-config-prettier": "^3.0.0-beta.9",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
+    "stylelint": "^9.2.0",
+    "stylelint-config-standard": "^18.2.0",
     "vue-template-compiler": "^2.5.13"
   },
   "dependencies": {
     "@directus/format-title": "^1.1.1",
     "@rijk/gravatar": "^1.0.0",
     "base-64": "^0.1.0",
-    "body-scroll-lock": "^2.3.3",
+    "body-scroll-lock": "^2.4.2",
     "convert-range": "^1.1.0",
     "deep-object-diff": "^1.1.0",
-    "directus-sdk-javascript":
-      "git+https://github.com/directus/directus-sdk-javascript.git#next",
+    "directus-sdk-javascript": "git+https://github.com/directus/directus-sdk-javascript.git#next",
     "idlejs": "^2.0.1",
     "lodash": "^4.17.5",
     "register-service-worker": "^1.2.0",
-    "v-tooltip": "^2.0.0-rc.31",
+    "v-tooltip": "^2.0.0-rc.32",
     "vue": "^2.5.16",
     "vue-i18n": "^7.6.0",
     "vue-notification": "^1.3.7",
@@ -47,19 +47,35 @@
     "vuex-persistedstate": "^2.5.2"
   },
   "babel": {
-    "presets": ["@vue/app"]
+    "presets": [
+      "@vue/app"
+    ]
   },
   "eslintConfig": {
     "root": true,
-    "extends": ["plugin:vue/recommended", "@vue/prettier"],
+    "extends": [
+      "plugin:vue/recommended",
+      "@vue/prettier"
+    ],
     "rules": {
-      "vue/name-property-casing": ["error", "kebab-case"]
+      "vue/name-property-casing": [
+        "error",
+        "kebab-case"
+      ]
     }
+  },
+  "stylelint": {
+    "processors": [
+      "stylelint-processor-html"
+    ],
+    "extends": "stylelint-config-standard"
   },
   "postcss": {
     "plugins": {
       "autoprefixer": {}
     }
   },
-  "browserslist": ["defaults"]
+  "browserslist": [
+    "defaults"
+  ]
 }
