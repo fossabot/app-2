@@ -3,9 +3,9 @@
     v-if="items && columns && primaryKeyField"
     :items="items"
     :columns="columns"
-    :primaryKeyField="primaryKeyField"
-    link="__link__"
-    :use-interfaces="true" />
+    :primary-key-field="primaryKeyField"
+    :use-interfaces="true"
+    link="__link__" />
 </template>
 
 <script>

@@ -26,30 +26,11 @@ export default {
   height: calc(100% - var(--header-height));
   z-index: 10;
   transition: var(--slow) var(--transition-out);
-  width: 90%;
+  width: 80%;
   background-color: var(--white);
   border-left: 1px solid var(--lightest-gray);
   padding: 20px;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
-
-  & .system {
-    padding-bottom: 30px;
-    border-bottom: 1px solid var(--lightest-gray);
-    margin-bottom: 30px;
-  }
-}
-
-.info-enter-active {
-  transition: var(--slow) var(--transition-in);
-}
-
-.info-leave-active {
-  transition: var(--medium) var(--transition-out);
-}
-
-.info-enter,
-.info-leave-to {
-  transform: translateX(100%);
 }
 </style>

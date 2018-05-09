@@ -1,13 +1,19 @@
 <template>
-  <div class="v-avatar" :class="{ loading }">
-    <div class="wrapper" :style="{ borderColor: `var(--${color})` }">
+  <div 
+    :class="{ loading }" 
+    class="v-avatar">
+    <div 
+      :style="{ borderColor: `var(--${color})` }" 
+      class="wrapper">
       <img
         v-show="!error && loading === false"
         :src="src"
         :alt="alt"
         @load="loading = false"
         @error="onImageLoadingError">
-      <i v-if="error" class="material-icons">person</i>
+      <i 
+        v-if="error" 
+        class="material-icons">person</i>
     </div>
     <div
       v-if="indicator"

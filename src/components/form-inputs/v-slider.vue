@@ -22,7 +22,7 @@
       :for="id"
       :class="{
         'output-shown': alwaysShowOutput
-      }">{{ valueOrDefault }} {{ unit }}</output>
+    }">{{ valueOrDefault }} {{ unit }}</output>
   </div>
 </template>
 

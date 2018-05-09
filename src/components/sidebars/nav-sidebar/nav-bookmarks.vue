@@ -3,13 +3,14 @@
     <h3
       v-if="bookmarks && bookmarks.length > 0"
       class="style-4">{{ $t('bookmarks') }}</h3>
-    <nav v-if="bookmarks && bookmarks.length > 0" :class="{ 'no-border': noBorder }">
+    <nav 
+      v-if="bookmarks && bookmarks.length > 0" 
+      :class="{ 'no-border': noBorder }">
       <ul>
         <li
           v-for="bookmark in bookmarks"
           :key="bookmark.id"
-          class="bookmark">
-        </li>
+          class="bookmark"/>
       </ul>
     </nav>
   </div>

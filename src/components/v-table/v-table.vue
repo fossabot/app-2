@@ -218,11 +218,6 @@ export default {
       );
     }
   },
-  created() {
-    this.drag = this.$lodash.throttle(this.drag, 20);
-
-    this.initWidths();
-  },
   watch: {
     columnWidths() {
       this.initWidths();
@@ -230,6 +225,11 @@ export default {
     columns() {
       this.initWidths();
     }
+  },
+  created() {
+    this.drag = this.$lodash.throttle(this.drag, 20);
+
+    this.initWidths();
   },
   methods: {
     selectAll() {

@@ -34,8 +34,8 @@
             <div v-if="activity.changes">
               <div
                 v-for="({ field, before, after }) in activity.changes"
-                class="change"
-                :key="field.field">
+                :key="field.field"
+                class="change">
                 <p>{{ field.name }}</p>
                 <div class="diff">
                   <div

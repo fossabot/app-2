@@ -1,6 +1,9 @@
 <template>
   <div class="nav-sidebar">
-    <v-blocker v-show="active" class="blocker" @click="disableNav" />
+    <v-blocker 
+      v-show="active" 
+      class="blocker" 
+      @click="disableNav" />
     <transition name="nav">
       <aside :class="{ active }">
         <button
@@ -12,10 +15,13 @@
         <section class="content">
           <project-switcher />
 
-          <nav-menu :title="$t('collections')" :links="collectionNames.map(name => ({
-            path: `/collections/${name}`,
-            name: $t(`collections-${name}`)
-          }))" no-border />
+          <nav-menu 
+            :title="$t('collections')" 
+            :links="collectionNames.map(name => ({
+              path: `/collections/${name}`,
+              name: $t(`collections-${name}`)
+            }))" 
+            no-border />
 
           <nav-bookmarks :bookmarks="bookmarks" />
         </section>

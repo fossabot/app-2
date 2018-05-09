@@ -1,6 +1,8 @@
 <template>
   <div class="login-form">
-    <form v-if="reset" @submit.prevent="resetPassword">
+    <form 
+      v-if="reset" 
+      @submit.prevent="resetPassword">
       <label for="email">{{ $t('email_address') }}</label>
       <v-input
         id="email"
@@ -18,9 +20,13 @@
         :disabled="resetButtonDisabled"
         type="submit">{{ $t('reset_password') }}</v-button>
 
-      <button class="toggle-reset" @click.prevent="reset = false">{{ $t('login') }}</button>
+      <button 
+        class="toggle-reset" 
+        @click.prevent="reset = false">{{ $t('login') }}</button>
     </form>
-    <form v-else @submit.prevent="login">
+    <form 
+      v-else 
+      @submit.prevent="login">
       <div v-if="apiUrls.length === 0">
         <label for="url">{{ $t('api_url') }}</label>
         <v-input
@@ -75,7 +81,9 @@
         :loading="loading"
         type="submit">{{ $t('login') }}</v-button>
 
-      <button class="toggle-reset" @click.prevent="reset = true">{{ $t('forgot_password') }}</button>
+      <button 
+        class="toggle-reset" 
+        @click.prevent="reset = true">{{ $t('forgot_password') }}</button>
     </form>
     <nav>
       <transition-group
@@ -85,7 +93,9 @@
         <li
           v-for="provider in thirdPartyAuthProviders"
           :key="provider.name">
-          <a v-tooltip.bottom="$helpers.formatTitle(provider.name)" :href="url + '/_/auth/sso/' + provider.name">
+          <a 
+            v-tooltip.bottom="$helpers.formatTitle(provider.name)" 
+            :href="url + '/_/auth/sso/' + provider.name">
             <img
               :alt="provider.name"
               :src="provider.icon">

@@ -11,7 +11,7 @@ import VListingOptions from "./components/extensions/v-listing-options/v-listing
 import VReadonly from "./components/extensions/v-readonly/v-readonly.vue";
 
 // form-inputs
-import VButton from "./components/form-inputs/v-button.vue"
+import VButton from "./components/form-inputs/v-button.vue";
 import VCheckbox from "./components/form-inputs/v-checkbox.vue";
 import VInput from "./components/form-inputs/v-input.vue";
 import VRadio from "./components/form-inputs/v-radio.vue";

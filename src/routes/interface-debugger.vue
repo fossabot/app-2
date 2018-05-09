@@ -26,8 +26,8 @@
 
         <label for="value">Value</label>
         <v-input
-          v-model="value"
           id="value"
+          v-model="value"
           type="text"
           class="value" />
 
@@ -66,9 +66,9 @@
           <v-input
             id="length"
             v-model="length"
+            :min="0"
             type="number"
-            class="length"
-            :min="0" />
+            class="length" />
         </div>
 
         <div class="settings">
@@ -77,7 +77,9 @@
             v-model="readonly"
             value="readonly"
             class="checkbox"
-            type="checkbox" /> <label for="readonly" class="inline">Read only</label>
+            type="checkbox" /> <label 
+              for="readonly" 
+              class="inline">Read only</label>
         </div>
 
         <div class="settings">
@@ -86,7 +88,9 @@
             v-model="required"
             value="required"
             class="checkbox"
-            type="checkbox" /> <label for="required" class="inline">Required</label>
+            type="checkbox" /> <label 
+              for="required" 
+              class="inline">Required</label>
         </div>
 
         <div class="settings">
@@ -95,15 +99,17 @@
             v-model="loading"
             value="loading"
             class="checkbox"
-            type="checkbox" /> <label for="loading" class="inline">Loading</label>
+            type="checkbox" /> <label 
+              for="loading" 
+              class="inline">Loading</label>
         </div>
       </fieldset>
       <fieldset>
         <legend>Options</legend>
         <div
           v-for="(option, optionID) in extension.options"
-          class="options"
-          :key="optionID">
+          :key="optionID"
+          class="options">
           <label :for="optionID">{{ option.name }}</label>
           <p>{{ option.comment }}</p>
           <v-interface
@@ -127,7 +133,9 @@
             v-model="newItem"
             value="newItem"
             class="checkbox"
-            type="checkbox" /> <label for="new" class="inline">New item</label>
+            type="checkbox" /> <label 
+              for="new" 
+              class="inline">New item</label>
         </div>
 
         <div class="misc">
@@ -140,7 +148,7 @@
             step="1"
             type="range">
           <span>{{ width }}px</span>
-      </div>
+        </div>
       </fieldset>
     </form>
   </div>

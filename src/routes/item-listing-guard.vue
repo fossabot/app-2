@@ -86,13 +86,13 @@ export default {
       return primaryKeyField && primaryKeyField.field;
     }
   },
-  created() {
-    this.hydrate();
-  },
   watch: {
     $route() {
       this.hydrate();
     }
+  },
+  created() {
+    this.hydrate();
   },
   methods: {
     hydrate() {

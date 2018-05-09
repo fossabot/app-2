@@ -1,8 +1,14 @@
 <template>
-  <v-modal-base :message="message" @cancel="$emit('confirm')">
-  <div class="buttons" @keydown.esc="$emit('confirm')">
-    <v-button class="confirm" @click="$emit('confirm')">{{ confirmText || $t('ok') }}</v-button>
-  </div>
+  <v-modal-base 
+    :message="message" 
+    @cancel="$emit('confirm')">
+    <div 
+      class="buttons" 
+      @keydown.esc="$emit('confirm')">
+      <v-button 
+        class="confirm" 
+        @click="$emit('confirm')">{{ confirmText || $t('ok') }}</v-button>
+    </div>
   </v-modal-base>
 </template>
 
@@ -11,6 +17,9 @@ import VModalBase from "../VModalBase.vue";
 
 export default {
   name: "v-alert",
+  components: {
+    VModalBase
+  },
   props: {
     message: {
       type: String,
@@ -20,9 +29,6 @@ export default {
       type: String,
       default: null
     }
-  },
-  components: {
-    VModalBase
   }
 };
 </script>

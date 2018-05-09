@@ -1,11 +1,20 @@
 <template>
   <div class="nav-menu">
-    <h3 v-if="title" class="style-4">{{ title }}</h3>
+    <h3 
+      v-if="title" 
+      class="style-4">{{ title }}</h3>
     <nav :class="{ 'no-border': noBorder }">
       <ul>
-        <li v-for="({ path, name, icon }) in links" :key="path">
-          <component :is="path.startsWith('http') ? 'a' : 'router-link'" :to="path" :href="path">
-            <i v-if="icon" class="material-icons icon">{{ icon }}</i>
+        <li 
+          v-for="({ path, name, icon }) in links" 
+          :key="path">
+          <component 
+            :is="path.startsWith('http') ? 'a' : 'router-link'" 
+            :to="path" 
+            :href="path">
+            <i 
+              v-if="icon" 
+              class="material-icons icon">{{ icon }}</i>
             <svg
               v-else
               class="icon"

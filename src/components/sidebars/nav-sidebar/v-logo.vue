@@ -3,16 +3,16 @@
     <transition name="fade">
       <img
         v-show="customLogoPath && customLogoLoaded"
-        @load="customLogoLoaded = true"
         :src="customLogoPath"
-        :alt="projectName">
+        :alt="projectName"
+        @load="customLogoLoaded = true">
     </transition>
     <transition name="fade">
       <img
         v-show="directusLogoLoaded && !customLogoExists"
-        @load="directusLogoLoaded = true"
         src="../../../assets/logo.svg"
-        alt="Directus Logo">
+        alt="Directus Logo"
+        @load="directusLogoLoaded = true">
     </transition>
   </div>
 </template>
@@ -27,6 +27,14 @@ export default {
       directusLogoLoaded: false
     };
   },
+  computed: {
+    customLogoExists() {
+      return Boolean(this.$store.state.settings.data.logo);
+    },
+    projectName() {
+      return this.$store.state.auth.projectName;
+    }
+  },
   created() {
     if (this.customLogoExists) {
       const logoID = this.$store.state.settings.data.logo;
@@ -36,14 +44,6 @@ export default {
         .then(res => res.data.storage.full_url)
         .then(url => (this.customLogoPath = url))
         .catch(console.error);
-    }
-  },
-  computed: {
-    customLogoExists() {
-      return Boolean(this.$store.state.settings.data.logo);
-    },
-    projectName() {
-      return this.$store.state.auth.projectName;
     }
   }
 };

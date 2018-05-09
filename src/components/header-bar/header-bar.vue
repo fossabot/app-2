@@ -1,9 +1,18 @@
 <template>
   <header class="header-bar">
-    <button class="nav-toggle" :disabled="navActive" @click="activateNav"><i class="material-icons">menu</i></button>
-    <h1 v-if="title" class="title">{{ title }}</h1>
-    <ol v-else class="breadcrumb title">
-      <li v-for="({ name, path }, index) in (breadcrumb || defaultBreadcrumb)">
+    <button
+      :disabled="navActive"
+      class="nav-toggle"
+      @click="activateNav"><i class="material-icons">menu</i></button>
+    <h1
+      v-if="title"
+      class="title">{{ title }}</h1>
+    <ol
+      v-else
+      class="breadcrumb title">
+      <li
+        v-for="({ name, path }, index) in (breadcrumb || defaultBreadcrumb)"
+        :key="path">
         <template v-if="index !== (breadcrumb || defaultBreadcrumb).length - 1">{{ name }}</template>
         <h1 v-else>{{ name }}</h1>
       </li>

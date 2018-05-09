@@ -21,14 +21,14 @@ import LoginForm from "../../login-form/login-form.vue";
 
 export default {
   name: "project-switcher",
+  components: {
+    VSignal,
+    LoginForm
+  },
   data() {
     return {
       active: false
     };
-  },
-  components: {
-    VSignal,
-    LoginForm
   }
 };
 </script>

@@ -158,18 +158,18 @@ export default {
       return false;
     }
   },
+  watch: {
+    $route() {
+      this.$refs.searchInput.focus();
+      this.open = false;
+    }
+  },
   created() {
     this.search = this.$lodash.debounce(this.search, 300);
     this.updateFilter = this.$lodash.debounce(this.updateFilter, 300);
   },
   mounted() {
     this.$refs.searchInput.focus();
-  },
-  watch: {
-    $route() {
-      this.$refs.searchInput.focus();
-      this.open = false;
-    }
   },
   methods: {
     search(value) {

@@ -19,7 +19,7 @@
           @setfield="readonly ? null : $emit('stageValue', {
             field: $event.field,
             value: $event.value,
-          })" />
+        })" />
       </div>
     </fieldset>
     <p v-else>
@@ -40,7 +40,7 @@
         @setfield="readonly ? null : $emit('stageValue', {
           field: $event.field,
           value: $event.value,
-        })" />
+      })" />
     </p>
   </div>
 </template>

@@ -1,7 +1,9 @@
 <template>
   <transition name="slide">
     <div class="v-modal-base">
-      <div class="mask" @click="$emit('cancel')" />
+      <div 
+        class="mask" 
+        @click="$emit('cancel')" />
       <div class="wrapper">
         <aside class="modal">
           <p>{{ message }}</p>

@@ -12,19 +12,22 @@
       </button>
     </header>
     <div class="links">
-      <nav-menu :links="[
-        { path: '/settings', name: $t('admin_settings'), icon: 'settings', color: 'warning' },
-        { path: 'https://getdirectus.com', name: $t('help_and_docs'), icon: 'help' }
+      <nav-menu 
+        :links="[
+          { path: '/settings', name: $t('admin_settings'), icon: 'settings', color: 'warning' },
+          { path: 'https://getdirectus.com', name: $t('help_and_docs'), icon: 'help' }
       ]" />
 
-      <nav-menu :links="[
-        { path: '/files', name: $t('file_library'), icon: 'collections' },
-        { path: '/users', name: $t('user_directory'), icon: 'person' }
+      <nav-menu 
+        :links="[
+          { path: '/files', name: $t('file_library'), icon: 'collections' },
+          { path: '/users', name: $t('user_directory'), icon: 'person' }
       ]" />
 
-      <nav-menu :links="[
-        { path: '/activity', name: $t('activity'), icon: 'notifications' },
-        { path: `/users/${currentUserID}`, name: $t('my_profile'), icon: 'person' }
+      <nav-menu 
+        :links="[
+          { path: '/activity', name: $t('activity'), icon: 'notifications' },
+          { path: `/users/${currentUserID}`, name: $t('my_profile'), icon: 'person' }
       ]" />
 
       <button @click="signOutActive = true">

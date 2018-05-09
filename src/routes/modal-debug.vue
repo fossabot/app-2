@@ -15,20 +15,36 @@
       <v-input v-model="cancelText" />
     </label>
 
-    <v-button class="button" @click="alert = true">ALERT</v-button>
-    <v-button class="button" @click="confirm = true">CONFIRM</v-button>
-    <v-button class="button" @click="prompt = true">PROMPT</v-button>
+    <v-button 
+      class="button" 
+      @click="alert = true">ALERT</v-button>
+    <v-button 
+      class="button" 
+      @click="confirm = true">CONFIRM</v-button>
+    <v-button 
+      class="button" 
+      @click="prompt = true">PROMPT</v-button>
 
     <p>Prompt entered text: {{ promptText }}</p>
 
-    <v-alert v-if="alert" :message="title" :confirmText="confirmText" @confirm="alert = false" />
-    <v-confirm v-if="confirm" :message="title" :cancelText="cancelText" :confirmText="confirmText" @confirm="confirm = false" @cancel="confirm = false" />
+    <v-alert 
+      v-if="alert" 
+      :message="title" 
+      :confirm-text="confirmText" 
+      @confirm="alert = false" />
+    <v-confirm 
+      v-if="confirm" 
+      :message="title" 
+      :cancel-text="cancelText" 
+      :confirm-text="confirmText" 
+      @confirm="confirm = false" 
+      @cancel="confirm = false" />
     <v-prompt
       v-if="prompt"
       v-model="promptText"
       :message="title"
-      :cancelText="cancelText"
-      :confirmText="confirmText"
+      :cancel-text="cancelText"
+      :confirm-text="confirmText"
       required
       @confirm="prompt = false"
       @cancel="prompt = false" />
