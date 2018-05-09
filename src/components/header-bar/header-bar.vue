@@ -60,7 +60,12 @@ export default {
   display: flex;
   align-items: center;
   z-index: 20;
-  padding-left: calc(var(--nav-sidebar-width) + 20px);
+
+  padding-left: 20px;
+
+  @media (min-width: 800px) {
+    padding-left: calc(var(--nav-sidebar-width) + 20px);
+  }
 
   .title {
     color: var(--darker-gray);

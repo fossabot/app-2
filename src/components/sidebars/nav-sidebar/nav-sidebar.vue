@@ -67,6 +67,12 @@ export default {
       return this.$store.state.auth.projectName;
     }
   },
+  created() {
+    document.body.classList.add("nav-sidebar");
+  },
+  beforeDestroy() {
+    document.body.classList.remove("nav-sidebar");
+  },
   methods: {
     logout() {
       this.$store.dispatch("logout");
@@ -112,6 +118,17 @@ aside {
   left: 0;
   height: 100%;
   z-index: 30;
+
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform var(--slow) var(--transition-out),
+    visibility 0ms var(--transition-out) var(--slow);
+
+  @media (min-width: 800px) {
+    transform: translateX(0);
+    transition: none;
+    visibility: visible;
+  }
 
   > div {
     height: 100%;
@@ -225,7 +242,9 @@ aside {
 </style>
 
 <style>
-body {
-  padding-left: var(--nav-sidebar-width);
+@media (min-width: 800px) {
+  body.nav-sidebar {
+    padding-left: var(--nav-sidebar-width);
+  }
 }
 </style>
