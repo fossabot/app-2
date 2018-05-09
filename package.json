@@ -21,8 +21,6 @@
     "@vue/eslint-config-prettier": "^3.0.0-beta.9",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
-    "stylelint": "^9.2.0",
-    "stylelint-config-standard": "^18.2.0",
     "vue-template-compiler": "^2.5.13"
   },
   "dependencies": {
@@ -63,9 +61,6 @@
         "kebab-case"
       ]
     }
-  },
-  "stylelint": {
-    "extends": "stylelint-config-standard"
   },
   "postcss": {
     "plugins": {
