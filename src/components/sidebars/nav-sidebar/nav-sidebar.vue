@@ -1,26 +1,29 @@
 <template>
-  <transition name="nav">
-    <aside class="nav-sidebar">
-      <button
-        class="a11y-close"
-        @click="$emit('toggleNav', false)">Close nav</button>
+  <div class="nav-sidebar">
+    <v-blocker v-show="active" class="blocker" @click="disableNav" />
+    <transition name="nav">
+      <aside  :class="{ active }">
+        <button
+          class="a11y-close"
+          @click="disableNav">Close nav</button>
 
-      <v-logo class="logo" />
+        <v-logo class="logo" />
 
-      <section class="content">
-        <project-switcher />
+        <section class="content">
+          <project-switcher />
 
-        <nav-menu :title="$t('collections')" :links="collectionNames.map(name => ({
-          path: `/collections/${name}`,
-          name: $t(`collections-${name}`)
-        }))" no-border />
+          <nav-menu :title="$t('collections')" :links="collectionNames.map(name => ({
+            path: `/collections/${name}`,
+            name: $t(`collections-${name}`)
+          }))" no-border />
 
-        <nav-bookmarks :bookmarks="bookmarks" />
-      </section>
+          <nav-bookmarks :bookmarks="bookmarks" />
+        </section>
 
-      <user-menu />
-    </aside>
-  </transition>
+        <user-menu />
+      </aside>
+    </transition>
+  </div>
 </template>
 
 <script>
@@ -29,6 +32,8 @@ import ProjectSwitcher from "./project-switcher.vue";
 import NavMenu from "./nav-menu.vue";
 import UserMenu from "./user-menu.vue";
 import NavBookmarks from "./nav-bookmarks.vue";
+import VBlocker from "../v-blocker.vue";
+import { TOGGLE_NAV } from "../../../store/mutation-types";
 
 export default {
   name: "nav-sidebar",
@@ -37,18 +42,8 @@ export default {
     ProjectSwitcher,
     NavMenu,
     UserMenu,
-    NavBookmarks
-  },
-  props: {
-    active: {
-      type: Boolean,
-      default: false
-    }
-  },
-  data() {
-    return {
-      signOutActive: false
-    };
+    NavBookmarks,
+    VBlocker
   },
   computed: {
     collectionNames() {
@@ -65,6 +60,9 @@ export default {
     },
     projectName() {
       return this.$store.state.auth.projectName;
+    },
+    active() {
+      return this.$store.state.sidebars.nav;
     }
   },
   created() {
@@ -105,6 +103,9 @@ export default {
         .then(() => {
           this.$router.push(`/collections/${collection}`);
         });
+    },
+    disableNav() {
+      this.$store.commit(TOGGLE_NAV, false);
     }
   }
 };
@@ -123,6 +124,12 @@ aside {
   visibility: hidden;
   transition: transform var(--slow) var(--transition-out),
     visibility 0ms var(--transition-out) var(--slow);
+
+  &.active {
+    transform: translateX(0);
+    transition: transform var(--slow) var(--transition-in);
+    visibility: visible;
+  }
 
   @media (min-width: 800px) {
     transform: translateX(0);

@@ -1,5 +1,6 @@
 <template>
   <header class="header-bar">
+    <button class="nav-toggle" :disabled="navActive" @click="activateNav"><i class="material-icons">menu</i></button>
     <h1 v-if="title" class="title">{{ title }}</h1>
     <ol v-else class="breadcrumb title">
       <li v-for="({ name, path }, index) in (breadcrumb || defaultBreadcrumb)">
@@ -12,6 +13,8 @@
 </template>
 
 <script>
+import { TOGGLE_NAV } from "../../store/mutation-types";
+
 export default {
   name: "header-bar",
   props: {
@@ -43,6 +46,14 @@ export default {
           path: url
         };
       });
+    },
+    navActive() {
+      return this.$store.state.sidebars.nav;
+    }
+  },
+  methods: {
+    activateNav() {
+      this.$store.commit(TOGGLE_NAV, true);
     }
   }
 };
@@ -65,6 +76,24 @@ export default {
 
   @media (min-width: 800px) {
     padding-left: calc(var(--nav-sidebar-width) + 20px);
+  }
+
+  .nav-toggle {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: opacity 140ms var(--transition);
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    @media (min-width: 800px) {
+      display: none;
+    }
   }
 
   .title {
