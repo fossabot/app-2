@@ -1,4 +1,10 @@
-import { STORE_HYDRATED, HYDRATING_FAILED, LATENCY } from "./mutation-types";
+import {
+  STORE_HYDRATED,
+  HYDRATING_FAILED,
+  LATENCY,
+  TOGGLE_NAV,
+  TOGGLE_INFO
+} from "./mutation-types";
 
 const mutations = {
   [STORE_HYDRATED](state) {
@@ -19,6 +25,14 @@ const mutations = {
     }
 
     state.latency = latencies;
+  },
+
+  [TOGGLE_NAV](state, active) {
+    state.sidebars.nav = active;
+  },
+
+  [TOGGLE_INFO](state, active) {
+    state.sidebars.info = active;
   }
 };
 

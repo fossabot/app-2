@@ -33,7 +33,11 @@ const store = new Vuex.Store({
   state: {
     hydrating: true,
     hydratingError: null,
-    latency: []
+    latency: [],
+    sidebars: {
+      nav: false,
+      info: false
+    }
   },
   actions,
   getters,

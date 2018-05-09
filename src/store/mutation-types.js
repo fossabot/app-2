@@ -70,3 +70,7 @@ export const SETTINGS_FAILED = "⚙️❌ Global Settings Failed";
 
 // Latency Check
 export const LATENCY = "⏱ Latency Check";
+
+// UI Stuff
+export const TOGGLE_NAV = "🎨 Toggle Nav Sidebar";
+export const TOGGLE_INFO = "🎨 Toggle Info Sidebar";
