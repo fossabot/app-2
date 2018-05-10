@@ -8,6 +8,8 @@ import Collections from "./routes/collections.vue";
 import NotFound from "./routes/not-found.vue";
 import Settings from "./routes/settings.vue";
 
+import NProgress from "nprogress";
+
 Vue.use(Router);
 
 const router = new Router({
@@ -139,6 +141,8 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
+  NProgress.start();
+
   const { loggedIn } = api;
   const publicRoute = to.matched.some(record => record.meta.publicRoute);
 
@@ -181,6 +185,16 @@ router.beforeEach((to, from, next) => {
 });
 
 router.afterEach((to, from) => {
+  NProgress.done();
+
+  const publicRoute = to.matched.some(record => record.meta.publicRoute);
+
+  if (publicRoute) {
+    document.body.classList.add("public");
+  } else {
+    document.body.classList.remove("public");
+  }
+
   if (store.state.hydrating === false && from.path !== "/logout") {
     store.dispatch("track", { page: to.path });
   }

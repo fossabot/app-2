@@ -1,0 +1,26 @@
+#nprogress {
+  pointer-events: none;
+  user-select: none;
+}
+
+#nprogress .bar {
+  background: var(--accent);
+
+  position: fixed;
+  z-index: 1031;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 2px;
+
+  @media (min-width: 800px) {
+    width: calc(100% - var(--nav-sidebar-width));
+    left: calc(var(--nav-sidebar-width) + 10px);
+
+    .public & {
+      width: 100%;
+      left: 0;
+    }
+  }
+}

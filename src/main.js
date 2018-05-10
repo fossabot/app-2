@@ -3,9 +3,11 @@ import lodash from "lodash";
 import Notifications from "vue-notification";
 import VueDraggable from "vuedraggable";
 import VTooltip from "v-tooltip";
+import NProgress from "nprogress";
 
 import "./assets/global.scss";
 import "./assets/tooltip.scss";
+import "./assets/progressbar.scss";
 import "./globals";
 import "./register-service-worker";
 import App from "./app.vue";
@@ -31,13 +33,18 @@ Vue.config.productionTip = false;
 Object.defineProperty(Vue.prototype, "$lodash", { value: lodash });
 Object.defineProperty(Vue.prototype, "$api", { value: api });
 
+NProgress.configure({ showSpinner: false });
+
+Object.defineProperty(Vue.prototype, "$progress", { value: NProgress });
+
 Vue.use(Notifications);
+
 Vue.component("draggable", VueDraggable);
+
 Vue.use(VTooltip, {
   defaultDelay: 500
 });
 
-/* eslint-disable no-new */
 new Vue({
   render: h => h(App),
   router,
