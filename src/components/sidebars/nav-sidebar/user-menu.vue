@@ -6,7 +6,7 @@
         :alt="fullName"
         :indicator="true"
         class="avatar" />
-      <span>{{ fullName }}</span>
+      <span class="no-wrap">{{ fullName }}</span>
       <i class="material-icons">more_vert</i>
     </header>
     <div class="links">
@@ -99,7 +99,7 @@ export default {
     position: sticky;
     top: 0;
     background-color: var(--white);
-    padding: 10px 0;
+    padding: 10px 10px 10px 0;
     border-top: 1px solid var(--lightest-gray);
     border-bottom: 1px solid var(--lightest-gray);
     margin-bottom: 10px;
@@ -109,6 +109,7 @@ export default {
 
     .avatar {
       margin-right: 10px;
+      flex-shrink: 0;
     }
 
     > i {
