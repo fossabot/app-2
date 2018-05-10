@@ -70,12 +70,6 @@ export default {
       return this.$store.state.sidebars.nav;
     }
   },
-  created() {
-    document.body.classList.add("nav-sidebar");
-  },
-  beforeDestroy() {
-    document.body.classList.remove("nav-sidebar");
-  },
   methods: {
     logout() {
       this.$store.dispatch("logout");
@@ -183,7 +177,7 @@ aside {
 
 <style>
 @media (min-width: 800px) {
-  body.nav-sidebar {
+  body {
     padding-left: var(--nav-sidebar-width);
   }
 }
