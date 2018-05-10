@@ -1,19 +1,20 @@
 <template>
   <div class="nav-menu">
-    <h3 
-      v-if="title" 
+    <h3
+      v-if="title"
       class="style-4">{{ title }}</h3>
     <nav :class="{ 'no-border': noBorder }">
       <ul>
-        <li 
-          v-for="({ path, name, icon }) in links" 
+        <li
+          v-for="({ path, name, icon, color }) in links"
           :key="path">
-          <component 
-            :is="path.startsWith('http') ? 'a' : 'router-link'" 
-            :to="path" 
-            :href="path">
-            <i 
-              v-if="icon" 
+          <component
+            :is="path.startsWith('http') ? 'a' : 'router-link'"
+            :to="path"
+            :href="path"
+            :class="color || null">
+            <i
+              v-if="icon"
               class="material-icons icon">{{ icon }}</i>
             <svg
               v-else
@@ -88,10 +89,9 @@ a:hover,
 .user-menu .router-link-exact-active {
   color: var(--accent);
 
-  i,
-  svg {
-    color: var(--accent);
-    fill: var(--accent);
+  .icon {
+    color: currentColor;
+    fill: currentColor;
   }
 
   &::before {
@@ -118,5 +118,47 @@ nav:not(.no-border) {
   padding-bottom: 10px;
   margin-bottom: 10px;
   border-bottom: 1px solid var(--lightest-gray);
+}
+
+.success {
+  color: var(--success);
+
+  a:hover,
+  .content .router-link-active,
+  .user-menu .router-link-exact-active {
+    color: var(--success-dark);
+
+    &::before {
+      background-color: var(--success);
+    }
+  }
+}
+
+.warning {
+  color: var(--warning);
+
+  &:hover,
+  .content &.router-link-active,
+  .user-menu &.router-link-exact-active {
+    color: var(--warning-dark);
+
+    &::before {
+      background-color: var(--warning);
+    }
+  }
+}
+
+.danger {
+  color: var(--danger);
+}
+
+.accent,
+.success,
+.warning,
+.danger {
+  .icon {
+    color: currentColor;
+    fill: currentColor;
+  }
 }
 </style>
