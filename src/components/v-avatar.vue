@@ -1,9 +1,9 @@
 <template>
-  <div 
-    :class="{ loading }" 
+  <div
+    :class="{ loading }"
     class="v-avatar">
-    <div 
-      :style="{ borderColor: `var(--${color})` }" 
+    <div
+      :style="{ borderColor: `var(--${color})` }"
       class="wrapper">
       <img
         v-show="!error && loading === false"
@@ -11,8 +11,8 @@
         :alt="alt"
         @load="loading = false"
         @error="onImageLoadingError">
-      <i 
-        v-if="error" 
+      <i
+        v-if="error"
         class="material-icons">person</i>
     </div>
     <div
@@ -78,6 +78,7 @@ export default {
   border: 3px solid;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 img {
