@@ -88,6 +88,10 @@ export default {
   transition: transform var(--medium) var(--transition-out);
   will-change: transform;
 
+  @media (min-width: 800px) {
+    box-shadow: 1px 0 0 0 var(--lightest-gray);
+  }
+
   &:hover,
   .user-is-tabbing &:focus,
   .user-is-tabbing &:focus-within {
