@@ -55,7 +55,7 @@ export default {
         return `${url}/${filename}`;
       }
 
-      return this.$helpers.gravatar(this.email, { size: 40 });
+      return this.$helpers.gravatar(this.email, { size: 40, default: 404 });
     },
     currentUserID() {
       return this.$store.state.me.data && this.$store.state.me.data.id;
