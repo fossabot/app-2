@@ -1,6 +1,6 @@
 <template>
   <div class="settings">
-    <portal to="header-title"><h1 class="style-1"><breadcrumb :links="links" /></h1></portal>
+    <header-bar :breadcrumb="links" />
 
     <v-details
       :title="$t('settings_interface')"
@@ -91,7 +91,7 @@
 
 <script>
 import { version } from "../../package.json";
-import VSignal from "../components/VSignal.vue";
+import VSignal from "../components/v-signal.vue";
 
 export default {
   name: "settings",

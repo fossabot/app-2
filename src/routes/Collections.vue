@@ -1,7 +1,6 @@
 <template>
   <div class="collections">
     <header-bar />
-    <nav-sidebar />
     <v-table
       :items="items"
       :columns="fields"
@@ -44,6 +43,6 @@ export default {
 
 <style lang="scss" scoped>
 .collections {
-  padding-bottom: (--page-padding-bottom);
+  padding-bottom: var(--page-padding-bottom);
 }
 </style>

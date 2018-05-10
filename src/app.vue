@@ -16,6 +16,8 @@
     class="directus">
 
     <div v-if="!hydrating">
+      <nav-sidebar />
+
       <router-view class="page-root" />
 
       <v-confirm

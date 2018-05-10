@@ -6,6 +6,7 @@ import store from "./store";
 import Login from "./routes/login.vue";
 import Collections from "./routes/collections.vue";
 import NotFound from "./routes/not-found.vue";
+import Settings from "./routes/settings.vue";
 
 Vue.use(Router);
 
@@ -94,10 +95,10 @@ const router = new Router({
     //   path: "/debug",
     //   component: Debug
     // },
-    // {
-    //   path: "/settings",
-    //   component: Settings
-    // },
+    {
+      path: "/settings",
+      component: Settings
+    },
     // {
     //   path: "/settings/global",
     //   component: SettingsGlobal
