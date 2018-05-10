@@ -5,6 +5,7 @@ import store from "./store";
 
 import Login from "./routes/login.vue";
 import Collections from "./routes/collections.vue";
+import ItemListing from "./routes/item-listing.vue";
 import NotFound from "./routes/not-found.vue";
 import Settings from "./routes/settings.vue";
 
@@ -23,11 +24,11 @@ const router = new Router({
       path: "/collections",
       component: Collections
     },
-    // {
-    //   path: "/collections/:collection",
-    //   props: true,
-    //   component: ItemListingGuard
-    // },
+    {
+      path: "/collections/:collection",
+      props: true,
+      component: ItemListing
+    },
     // {
     //   path: "/collections/:collection/:primaryKey",
     //   props: true,

@@ -1,6 +1,7 @@
 <template>
   <div class="collections">
     <header-bar />
+    <nav-sidebar />
     <v-table
       :items="items"
       :columns="fields"
