@@ -13,7 +13,8 @@
       <li
         v-for="({ name, path }, index) in (breadcrumb || defaultBreadcrumb)"
         :key="path">
-        <template v-if="index !== (breadcrumb || defaultBreadcrumb).length - 1">{{ name }}</template>
+        <template v-if="index !== (breadcrumb || defaultBreadcrumb).length - 1">
+        <router-link :to="path">{{ name }}</router-link></template>
         <h1 v-else>{{ name }}</h1>
       </li>
     </ol>
@@ -105,7 +106,7 @@ export default {
   }
 
   .title {
-    color: var(--darker-gray);
+    color: var(--gray);
     font-size: 1.38em;
     line-height: 1.16;
     font-weight: 400;
@@ -115,6 +116,28 @@ export default {
   .breadcrumb {
     list-style: none;
     padding: 0;
+
+    li {
+      display: inline-block;
+
+      &:not(:last-child)::after {
+        content: "chevron_right";
+        font-family: "Material Icons";
+        color: var(--dark-gray);
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 5px;
+      }
+    }
+
+    a {
+      text-decoration: none;
+
+      &:hover,
+      .user-is-tabbing &:focus {
+        color: var(--white);
+      }
+    }
   }
 
   h1.title,
