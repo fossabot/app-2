@@ -91,12 +91,11 @@ i {
   position: absolute;
   left: 0;
   right: 0;
-  margin-left: 0;
-  margin-right: 0;
   top: 50%;
   transform: translateY(-55%);
   color: var(--accent);
   opacity: 0.7;
+  text-align: center;
 }
 
 .indicator {

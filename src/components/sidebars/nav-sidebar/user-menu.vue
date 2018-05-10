@@ -1,15 +1,13 @@
 <template>
   <div class="user-menu">
     <header>
-      <button @click="toggleUserMenu()">
-        <v-avatar
-          :src="avatarURL"
-          :alt="fullName"
-          :indicator="true"
-          class="avatar" />
-        <span>{{ fullName }}</span>
-        <i class="material-icons">more_vert</i>
-      </button>
+      <v-avatar
+        :src="avatarURL"
+        :alt="fullName"
+        :indicator="true"
+        class="avatar" />
+      <span>{{ fullName }}</span>
+      <i class="material-icons">more_vert</i>
     </header>
     <div class="links">
       <nav-menu
@@ -104,17 +102,14 @@ export default {
     border-bottom: 1px solid var(--lightest-gray);
     margin-bottom: 10px;
     z-index: +1;
+    display: flex;
+    align-items: center;
 
     .avatar {
       margin-right: 10px;
     }
 
-    button {
-      display: flex;
-      align-items: center;
-    }
-
-    i {
+    > i {
       position: absolute;
       right: -10px;
       color: inherit;
