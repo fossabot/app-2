@@ -1,7 +1,7 @@
 <template>
   <div class="login-form">
-    <form 
-      v-if="reset" 
+    <form
+      v-if="reset"
       @submit.prevent="resetPassword">
       <label for="email">{{ $t('email_address') }}</label>
       <v-input
@@ -20,12 +20,12 @@
         :disabled="resetButtonDisabled"
         type="submit">{{ $t('reset_password') }}</v-button>
 
-      <button 
-        class="toggle-reset" 
+      <button
+        class="toggle-reset"
         @click.prevent="reset = false">{{ $t('login') }}</button>
     </form>
-    <form 
-      v-else 
+    <form
+      v-else
       @submit.prevent="login">
       <div v-if="apiUrls.length === 0">
         <label for="url">{{ $t('api_url') }}</label>
@@ -81,8 +81,8 @@
         :loading="loading"
         type="submit">{{ $t('login') }}</v-button>
 
-      <button 
-        class="toggle-reset" 
+      <button
+        class="toggle-reset"
         @click.prevent="reset = true">{{ $t('forgot_password') }}</button>
     </form>
     <nav>
@@ -93,8 +93,8 @@
         <li
           v-for="provider in thirdPartyAuthProviders"
           :key="provider.name">
-          <a 
-            v-tooltip.bottom="$helpers.formatTitle(provider.name)" 
+          <a
+            v-tooltip.bottom="$helpers.formatTitle(provider.name)"
             :href="url + '/_/auth/sso/' + provider.name">
             <img
               :alt="provider.name"
@@ -200,11 +200,11 @@ export default {
         .ping()
         .then(() => {
           this.exists = true;
+          this.$api.url = null;
+          this.checkingExistence = false;
         })
         .catch(() => {
           this.exists = false;
-        })
-        .finally(() => {
           this.$api.url = null;
           this.checkingExistence = false;
         });
@@ -218,9 +218,10 @@ export default {
         .then(res => res.data)
         .then(thirdPartyAuthProviders => {
           this.thirdPartyAuthProviders = thirdPartyAuthProviders;
+          this.gettingThirdPartyAuthProviders = false;
         })
-        .catch(console.error)
-        .finally(() => {
+        .catch(err => {
+          console.error(err);
           this.gettingThirdPartyAuthProviders = false;
         });
     },
