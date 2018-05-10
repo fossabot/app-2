@@ -123,7 +123,7 @@ aside {
   left: 0;
   height: 100%;
   z-index: 30;
-  max-width: var(--nav-sidebar-width);
+  max-width: 80%;
   background-color: var(--white);
 
   transform: translateX(-100%);
@@ -135,16 +135,13 @@ aside {
     transform: translateX(0);
     transition: transform var(--slow) var(--transition-in);
     visibility: visible;
-
-    @media (max-width: 800px) {
-      max-width: 80%;
-    }
   }
 
   @media (min-width: 800px) {
     transform: translateX(0);
     transition: none;
     visibility: visible;
+    max-width: var(--nav-sidebar-width);
   }
 
   > div {
