@@ -28,7 +28,9 @@
           { path: `/users/${currentUserID}`, name: $t('my_profile'), icon: 'person' }
       ]" />
 
-      <button @click="signOutActive = true">
+      <button
+        class="sign-out"
+        @click="signOutActive = true">
         <i class="material-icons icon">exit_to_app</i>
         {{ $t('sign_out') }}
       </button>
@@ -126,6 +128,31 @@ export default {
     a,
     i {
       color: var(--warning-dark);
+    }
+  }
+
+  .icon {
+    font-size: 18px;
+    width: 15px;
+    height: 18px;
+    margin-right: 10px;
+    color: var(--light-gray);
+    fill: var(--light-gray);
+
+    /* Forces left-alignment of material-icons */
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    vertical-align: -5px;
+  }
+
+  .sign-out:hover,
+  .user-is-tabbing .sign-out:focus {
+    color: var(--accent);
+
+    .icon {
+      color: currentColor;
+      fill: currentColor;
     }
   }
 }
