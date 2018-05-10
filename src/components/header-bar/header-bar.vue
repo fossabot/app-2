@@ -38,8 +38,7 @@ export default {
   },
   computed: {
     defaultBreadcrumb() {
-      const routeParts = this.$route.path.split("/");
-      routeParts.shift();
+      const routeParts = this.$route.path.split("/").filter(name => name);
 
       return routeParts.map((part, i) => {
         let url = "";
