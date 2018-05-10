@@ -76,12 +76,19 @@ a {
   text-decoration: none;
   display: block;
   position: relative;
-}
 
-a,
-i,
-svg {
-  transition: var(--fast) var(--transition);
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 3px;
+    background-color: currentColor;
+    left: -20px;
+    top: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: var(--medium) var(--transition-out);
+  }
 }
 
 a:hover,
@@ -93,15 +100,13 @@ a:hover,
     color: currentColor;
     fill: currentColor;
   }
+}
 
+.content .router-link-active,
+.user-menu .router-link-exact-active {
   &::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 3px;
-    background-color: var(--accent);
-    left: -20px;
-    top: 0;
+    transform: scaleX(1);
+    transition: var(--medium) var(--transition-in);
   }
 }
 
