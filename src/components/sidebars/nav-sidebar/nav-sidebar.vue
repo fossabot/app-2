@@ -1,8 +1,8 @@
 <template>
   <div class="nav-sidebar">
-    <v-blocker 
-      v-show="active" 
-      class="blocker" 
+    <v-blocker
+      v-show="active"
+      class="blocker"
       @click="disableNav" />
     <transition name="nav">
       <aside :class="{ active }">
@@ -15,17 +15,16 @@
         <section class="content">
           <project-switcher />
 
-          <nav-menu 
-            :title="$t('collections')" 
+          <nav-menu
+            :title="$t('collections')"
             :links="collectionNames.map(name => ({
               path: `/collections/${name}`,
               name: $t(`collections-${name}`)
-            }))" 
+            }))"
             no-border />
 
           <nav-bookmarks :bookmarks="bookmarks" />
         </section>
-
         <user-menu />
       </aside>
     </transition>
@@ -125,6 +124,7 @@ aside {
   height: 100%;
   z-index: 30;
   max-width: var(--nav-sidebar-width);
+  background-color: var(--white);
 
   transform: translateX(-100%);
   visibility: hidden;
@@ -167,7 +167,6 @@ aside {
 
 .content {
   position: relative;
-  background-color: var(--white);
   padding: 20px;
   padding-top: 0;
   height: calc(100% - var(--header-height) - var(--header-height));

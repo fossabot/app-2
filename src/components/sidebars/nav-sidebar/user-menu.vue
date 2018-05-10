@@ -12,19 +12,19 @@
       </button>
     </header>
     <div class="links">
-      <nav-menu 
+      <nav-menu
         :links="[
           { path: '/settings', name: $t('admin_settings'), icon: 'settings', color: 'warning' },
           { path: 'https://getdirectus.com', name: $t('help_and_docs'), icon: 'help' }
       ]" />
 
-      <nav-menu 
+      <nav-menu
         :links="[
           { path: '/files', name: $t('file_library'), icon: 'collections' },
           { path: '/users', name: $t('user_directory'), icon: 'person' }
       ]" />
 
-      <nav-menu 
+      <nav-menu
         :links="[
           { path: '/activity', name: $t('activity'), icon: 'notifications' },
           { path: `/users/${currentUserID}`, name: $t('my_profile'), icon: 'person' }
@@ -78,6 +78,7 @@ export default {
 
 <style lang="scss" scoped>
 .user-menu {
+  padding: 0 20px 20px;
   position: absolute;
   left: 0;
   bottom: 0;
