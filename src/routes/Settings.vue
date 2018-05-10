@@ -1,6 +1,7 @@
 <template>
   <div class="settings">
     <header-bar :breadcrumb="links" />
+    <nav-sidebar />
 
     <v-details
       :title="$t('settings_interface')"

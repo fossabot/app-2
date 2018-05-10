@@ -6,5 +6,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  beforeRouteEnter(to, from, next) {
+    setTimeout(() => next(), 2000);
+  }
+};
 </script>
