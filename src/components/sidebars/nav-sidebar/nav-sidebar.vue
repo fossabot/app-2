@@ -123,6 +123,7 @@ aside {
   left: 0;
   height: 100%;
   z-index: 30;
+  width: 100%;
   max-width: 80%;
   background-color: var(--white);
 
