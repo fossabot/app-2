@@ -162,6 +162,10 @@ aside {
       top: 13px;
       left: 13px;
     }
+
+    @media (min-width: 800px) {
+      display: none;
+    }
   }
 }
 
