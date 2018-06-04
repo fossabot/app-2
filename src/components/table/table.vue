@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="container"
     :style="{ minWidth: totalWidth + 'px' }"
     class="v-table">
     <div class="toolbar" :class="{ shadow: scrolled }">
@@ -49,7 +50,7 @@
       </div>
     </div>
     <div class="body">
-      <v-virtual-list :size="rowHeight" :remain="visibleRowCount" v-if="link" class="v-virtual-list" :onscroll="onScroll">
+      <v-virtual-list :size="rowHeight" :remain="remain" v-if="link" class="v-virtual-list" :onscroll="onScroll">
         <div
           v-for="row in items"
           :key="row[primaryKeyField]"
@@ -98,7 +99,7 @@
         v-else
         class="v-virtual-list"
         :size="rowHeight"
-        :remain="visibleRowCount"
+        :remain="remain"
         name="row">
         <div
           v-for="row in items"
@@ -198,39 +199,20 @@ export default {
       widths: {},
       lastDragXPosition: null,
       windowHeight: 0,
-      scrolled: false
+      scrolled: false,
+
+      // Height of the virtual scroll list in px
+      remain: 50
     };
   },
   mounted() {
-    if (this.height === null) {
-      this.getWindowHeight();
-
-      this.windowResizeHandler = this.$lodash.debounce(
-        this.getWindowHeight,
-        200
-      );
-
-      window.addEventListener("resize", this.windowResizeHandler);
-    }
+    window.addEventListener("resize", this.calculateHeight);
+    this.calculateHeight();
   },
   beforeDestroy() {
-    if (this.height === null) {
-      window.removeEventListener("resize", this.windowResizeHandler);
-    }
+    window.removeEventListener("resize", this.calculateHeight);
   },
   computed: {
-    visibleRowCount() {
-      const height = this.height ? this.height : this.fullHeight;
-      return Math.ceil(height / this.rowHeight);
-    },
-    fullHeight() {
-      let headerHeight = getComputedStyle(document.body)
-        .getPropertyValue("--header-height")
-        .trim();
-      headerHeight = headerHeight.substring(0, headerHeight.length - 2); // remove 'px'
-
-      return this.windowHeight - headerHeight * 2;
-    },
     allSelected() {
       const primaryKeyFields = this.items
         .map(item => item[this.primaryKeyField])
@@ -336,12 +318,12 @@ export default {
         ...this.columnWidths
       };
     },
-    getWindowHeight() {
-      this.windowHeight = window.innerHeight;
-    },
     onScroll(event, data) {
       if (data.offsetAll - data.offset < 500) this.$emit("scrollEnd");
       this.scrolled = data.offset > 0;
+    },
+    calculateHeight() {
+      this.remain = this.$refs.container.clientHeight / this.rowHeight;
     }
   }
 };
