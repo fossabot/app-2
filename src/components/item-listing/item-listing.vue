@@ -27,6 +27,7 @@
     :selection="selection"
     :loading="items.loading"
     :lazy-loading="items.lazyLoading"
+    :link="links ? '__link__' : null"
     @select="$emit('select', $event)"
     @query="$emit('query', $event)"
     @options="$emit('options', $event)"
@@ -152,8 +153,18 @@ export default {
         .getItems(this.collection, this.formatParams())
         .then(res => {
           this.items.loading = false;
-          this.items.data = res.data;
           this.items.meta = res.meta;
+
+          if (this.links) {
+            this.items.data = res.data.map(item => ({
+              ...item,
+              __link__: `/collections/${this.collection}/${
+                item[this.primaryKeyField]
+              }`
+            }));
+          } else {
+            this.items.data = res.data;
+          }
 
           this.$emit("fetch", res.meta);
         })
@@ -174,7 +185,20 @@ export default {
         .getItems(this.collection, this.formatParams())
         .then(res => {
           this.items.lazyLoading = false;
-          this.items.data = [...this.items.data, ...res.data];
+
+          if (this.links) {
+            this.items.data = [
+              ...this.items.data,
+              ...res.data.map(item => ({
+                ...item,
+                __link__: `/collections/${this.collection}/${
+                  item[this.primaryKeyField]
+                }`
+              }))
+            ];
+          } else {
+            this.items.data = [...this.items.data, ...res.data];
+          }
 
           this.$emit("fetch", res.meta);
         })
