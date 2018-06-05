@@ -117,14 +117,26 @@
               @change="toggleCheckbox(row[primaryKeyField])" />
           </div>
           <div
-            v-for="{field} in columns"
+            v-for="{field, fieldInfo} in columns"
             :key="field"
             :style="{
               flexBasis: widths && widths[field] ?
                 widths[field] + 'px' :
                 null
             }"
-            class="cell">{{ row[field] }}</div>
+            class="cell">
+              <div
+                v-if="$lodash.isNil(row[field])"
+                class="empty">--</div>
+              <v-readonly
+                v-else-if="useInterfaces && !$lodash.isNil(row[field])"
+                :interfaceType="fieldInfo.interface"
+                :name="field"
+                :type="fieldInfo.type"
+                :options="fieldInfo.options"
+                :value="row[field]" />
+              <template v-else>{{ row[field] }}</template>
+          </div>
         </div>
       </v-virtual-list>
       <transition name="fade">
