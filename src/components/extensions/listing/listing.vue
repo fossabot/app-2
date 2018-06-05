@@ -69,10 +69,10 @@ export default {
       return this.$store.state.extensions.listings;
     },
     listing() {
-      return this.listings && this.listings[this.type];
+      return this.listings && this.listings[this.viewType];
     },
     componentName() {
-      return `listing-${this.type}`;
+      return `listing-${this.viewType}`;
     },
     primaryKeyField() {
       const fieldInfo = this.$lodash.filter(
