@@ -49,7 +49,7 @@
 
       </div>
     </div>
-    <div class="body">
+    <div class="body" :class="{ loading }">
       <v-virtual-list :size="rowHeight" :remain="remain" v-if="link" class="v-virtual-list" :onscroll="onScroll">
         <div
           v-for="row in items"
@@ -100,6 +100,7 @@
         class="v-virtual-list"
         :size="rowHeight"
         :remain="remain"
+        :onscroll="onScroll"
         name="row">
         <div
           v-for="row in items"
@@ -350,6 +351,13 @@ export default {
 
 .body {
   position: relative;
+  transition: opacity var(--medium) var(--transition-out);
+  opacity: 1;
+
+  &.loading {
+    transition: opacity var(--medium) var(--transition-in);
+    opacity: 0.4;
+  }
 }
 
 .v-virtual-list {
