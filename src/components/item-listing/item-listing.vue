@@ -97,6 +97,12 @@ export default {
   watch: {
     collection() {
       this.hydrate();
+    },
+    viewQuery: {
+      deep: true,
+      handler() {
+        this.getItems();
+      }
     }
   },
   methods: {
@@ -154,7 +160,7 @@ export default {
         limit: 50
       };
 
-      Object.assign(params, this.viewQuery[this.viewType] || {});
+      Object.assign(params, this.viewQuery);
 
       if (this.searchQuery) {
         params.q = this.searchQuery;
