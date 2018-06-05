@@ -4,6 +4,7 @@ Live demos:
 * [Last Release](https://directus.app)  
    
   [![Build Status](https://semaphoreci.com/api/v1/directus/app/branches/build/badge.svg)](https://semaphoreci.com/directus/app)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdirectus%2Fapp.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdirectus%2Fapp?ref=badge_shield)
 * [Last Commit](https://next.directus.app)  
    
   [![Build Status](https://semaphoreci.com/api/v1/directus/next/branches/master/badge.svg)](https://semaphoreci.com/directus/next)
@@ -39,3 +40,6 @@ If you're interested in the current state of the next version of the platform, f
 * Directus Core codebase released under the [GPLv3](http://www.gnu.org/copyleft/gpl.html) license.
 * Example Code, Design Previews, Demonstration Apps, Custom Extensions, Custom interfaces, and Documentation copyright 2017 [RANGER Studio LLC](http://rngr.org/).
 * RANGER Studio owns all Directus trademarks, service marks, and graphic logos on behalf of our project's community. The names of all Directus projects are trademarks of [RANGER Studio LLC](http://rngr.org/).
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdirectus%2Fapp.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdirectus%2Fapp?ref=badge_large)
