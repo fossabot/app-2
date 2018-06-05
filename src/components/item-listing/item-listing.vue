@@ -23,7 +23,11 @@
     :items="items.data"
     :view-type="viewType"
     :view-query="viewQuery"
-    :view-options="viewOptions" />
+    :view-options="viewOptions"
+    :selection="selection"
+    @select="$emit('select', $event)"
+    @query="$emit('query', $event)"
+    @options="$emit('options', $event)" />
 </template>
 
 <script>
