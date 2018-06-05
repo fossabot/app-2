@@ -90,39 +90,19 @@
       </template>
     </v-info-sidebar>
 
-    <v-error
-      v-if="fields && Object.keys(fields).length === 0"
-      icon="build"
-      :title="$t('no_fields')"
-      :body="$t('no_fields_body')" />
-
-    <v-error
-      v-else-if="meta && meta.total_count === 0"
-      icon="web_asset"
-      :title="$t('empty_collection')"
-      :body="$t('empty_collection_body')" />
-
-    <v-error
-      v-else-if="(items && items.length === 0) && (meta && meta.total_count !== 0)"
-      :title="$t('no_results')"
-      :body="$t('no_results_body')"
-      icon="search" />
-
-    <v-listing
-      v-else
-      link="__link__"
-      :fields="fields"
-      :items="items"
-      :loading="loading"
-      :lazy-loading="lazyLoading"
+    <v-item-listing
+      :collection="collection"
+      :filters="filters"
+      :search-query="searchQuery"
+      :view-query="viewQuery"
+      :view-type="viewType"
+      :view-options="viewOptions"
       :selection="selection"
-      :options="viewOptions"
-      :type="viewType"
-      :query="viewQuery"
+      links
+      @fetch="meta = $event"
       @options="setViewOptions"
       @select="selection = $event"
-      @query="setViewQuery"
-      @next-page="fetchNextPage" />
+      @query="setViewQuery" />
 
     <portal to="modal" v-if="confirmRemove">
       <v-confirm

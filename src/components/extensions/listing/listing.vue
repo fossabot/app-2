@@ -4,10 +4,10 @@
     :primary-key-field="primaryKeyField"
     :fields="fields"
     :items="items"
-    :options="options"
+    :view-options="viewOptions"
+    :view-query="viewQuery"
     :loading="loading"
     :lazy-loading="lazyLoading"
-    :query="query"
     :selection="selection"
     :link="link"
     class="v-listing"
@@ -27,10 +27,6 @@ import VListingLoading from "./listing-loading.vue";
 export default {
   name: "v-listing",
   props: {
-    type: {
-      type: String,
-      required: true
-    },
     fields: {
       type: Object,
       required: true
@@ -39,9 +35,21 @@ export default {
       type: Array,
       required: true
     },
-    options: {
+    viewType: {
+      type: String,
+      required: true
+    },
+    viewOptions: {
       type: Object,
       default: () => ({})
+    },
+    viewQuery: {
+      type: Object,
+      default: () => ({})
+    },
+    selection: {
+      type: Array,
+      default: () => []
     },
     loading: {
       type: Boolean,
@@ -50,14 +58,6 @@ export default {
     lazyLoading: {
       type: Boolean,
       default: false
-    },
-    query: {
-      type: Object,
-      default: () => ({})
-    },
-    selection: {
-      type: Array,
-      default: () => []
     },
     link: {
       type: String,
@@ -84,7 +84,7 @@ export default {
     }
   },
   watch: {
-    type() {
+    viewType() {
       this.registerListing();
     }
   },
