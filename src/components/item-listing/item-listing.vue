@@ -25,9 +25,12 @@
     :view-query="viewQuery"
     :view-options="viewOptions"
     :selection="selection"
+    :loading="items.loading"
+    :lazy-loading="items.lazyLoading"
     @select="$emit('select', $event)"
     @query="$emit('query', $event)"
-    @options="$emit('options', $event)" />
+    @options="$emit('options', $event)"
+    @next-page="lazyLoad" />
 </template>
 
 <script>
@@ -80,7 +83,10 @@ export default {
         meta: null,
         data: null,
         loading: false,
-        error: null
+        error: null,
+
+        page: 0,
+        lazyLoading: false
       }
     };
   },
@@ -140,6 +146,7 @@ export default {
     getItems() {
       this.items.loading = true;
       this.items.error = null;
+      this.items.page = 0;
 
       return this.$api
         .getItems(this.collection, this.formatParams())
@@ -155,11 +162,33 @@ export default {
           this.items.error = error;
         });
     },
+    lazyLoad() {
+      if (this.items.lazyLoading) return;
+
+      this.items.lazyLoading = true;
+      this.items.error = null;
+
+      this.items.page = this.items.page + 1;
+
+      return this.$api
+        .getItems(this.collection, this.formatParams())
+        .then(res => {
+          this.items.lazyLoading = false;
+          this.items.data = [...this.items.data, ...res.data];
+
+          this.$emit("fetch", res.meta);
+        })
+        .catch(error => {
+          this.items.lazyLoading = false;
+          this.items.error = error;
+        });
+    },
     formatParams() {
       let params = {
         fields: "*.*",
         meta: "total_count",
-        limit: 50
+        limit: 50,
+        offset: 50 * this.items.page
       };
 
       Object.assign(params, this.viewQuery);
