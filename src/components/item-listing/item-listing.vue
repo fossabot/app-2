@@ -147,6 +147,8 @@ export default {
           this.items.loading = false;
           this.items.data = res.data;
           this.items.meta = res.meta;
+
+          this.$emit("fetch", res.meta);
         })
         .catch(error => {
           this.items.loading = false;
