@@ -487,6 +487,7 @@ export default {
 }
 
 .lazy-loader {
+  pointer-events: none;
   position: absolute;
   bottom: 0;
   left: 0;
